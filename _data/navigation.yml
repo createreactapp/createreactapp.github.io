@@ -1,0 +1,63 @@
+# main links
+docs:
+  - title: Getting Started
+    children:
+      - title: "What is Create React App?"
+        url: /
+      - title: "Installation"
+        url: /install-create-react-app
+      - title: "Structure"
+        url: /create-react-app-structure
+      - title: "Create React App Development Server"
+        url: /starting-the-create-react-app-development-server
+        
+      # - title: "Structure"
+      #   url: /structure/
+      # - title: "Installation"
+      #   url: /installation/
+      # - title: "Upgrading"
+      #   url: /upgrading/
+  # - title: Customization
+  #   children:
+  #     - title: "Configuration"
+  #       url: /configuration/
+  #     - title: "Overriding Theme Defaults"
+  #       url: /overriding-theme-defaults/
+  #     - title: "Navigation"
+  #       url: /navigation/
+  #     - title: "UI Text"
+  #       url: /ui-text/
+  #     - title: "Authors"
+  #       url: /authors/
+  #     - title: "Layouts"
+  #       url: /layouts/
+  # - title: Content
+  #   children:
+  #     - title: "Working with Posts"
+  #       url: /posts/
+  #     - title: "Working with Pages"
+  #       url: /pages/
+  #     - title: "Working with Collections"
+  #       url: /collections/
+  #     - title: "Helpers"
+  #       url: /helpers/
+  #     - title: "Utility Classes"
+  #       url: /utility-classes/
+  # - title: Extras
+  #   children:
+  #     - title: "Stylesheets"
+  #       url: /stylesheets/
+  #     - title: "JavaScript"
+  #       url: /javascript/
+  # - title: Meta
+  #   children:
+  #     - title: "History"
+  #       url: /history/
+  #     - title: "Contributing"
+  #       url: /contributing/
+  #     - title: "Old 2.2 Docs"
+  #       url: /docs-2-2/
+  #     - title: "License"
+  #       url: /license/
+  #     - title: "Terms &amp; Privacy Policy"
+  #       url: /terms/

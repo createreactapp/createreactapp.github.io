@@ -1,0 +1,393 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.11.2 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Structure - Create React App</title>
+<meta name="description" content="Learn Create React App">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Create React App">
+<meta property="og:title" content="Structure">
+<meta property="og:url" content="/create-react-app-structure">
+
+
+  <meta property="og:description" content="Learn Create React App">
+
+
+
+  <meta property="og:image" content="/assets/images/learn-create-react-app.png">
+
+
+
+  <meta name="twitter:site" content="@BunlongVan">
+  <meta name="twitter:title" content="Structure">
+  <meta name="twitter:description" content="Learn Create React App">
+  <meta name="twitter:url" content="/create-react-app-structure">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="/assets/images/learn-create-react-app.png">
+    
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2018-05-14T20:43:02+07:00">
+
+
+
+  <meta property="article:modified_time" content="2018-05-15T02:58:49+07:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/create-react-app-structure">
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": null,
+      "logo": "/assets/images/learn-create-react-app.png"
+    }
+  </script>
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "React",
+      "url": null,
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Create React App Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+<link rel="icon" href="/assets/images/favicon.ico">
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/">Create React App</a>
+        <ul class="visible-links">
+          
+        </ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">Getting Started</span>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/" class="">What is Create React App?</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/install-create-react-app" class="">Installation</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/create-react-app-structure" class="active">Structure</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/starting-the-create-react-app-development-server" class="">Create React App Development Server</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+    
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Structure">
+    <meta itemprop="description" content="">
+    
+    <meta itemprop="dateModified" content="May 14, 2018">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Structure
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>Change directories into the app you just created. If you list the contents of the directory including hidden files (ls -la), you should see the following structure:</p>
+
+<p><img src="/assets/images/create-react-app-structure.png" alt="Create React App Structure" /></p>
+
+<p>create-react-app has taken care of setting up the main structure of the application as well as a couple of developer settings. Most of what you see will not be visible to the visitor of your web app. React uses a tool called webpack which transforms the directories and files here into static assets. Visitors to your site are served those static assets.</p>
+
+<h2 id="gitignore">.gitignore</h2>
+
+<p>This is the standard file used by the source control tool git to determine which files and directories to ignore when committing code. While this file exists, create-react-app did not create a git repo within this folder. If you take a look at the file, it has taken care of ignoring a number of items.</p>
+
+<p><img src="/assets/images/create-react-app-gitignore.png" alt="Create React App .gitignore" /></p>
+
+<h2 id="packagejson">package.json</h2>
+
+<p><img src="/assets/images/create-react-app-package-json.png" alt="Create React App package-json" /></p>
+
+<p>This file outlines all the settings for the Create React App.</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">name</code> is the name of your app</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">version</code> is the current version</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">"private": true</code> true is a failsafe setting to avoid accidentally publishing your app as a public package within the npm ecosystem</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">dependencies</code> contains all the required node modules and versions required for the application. Here, it contains two dependencies, which allow us to use <code class="highlighter-rouge">react</code> and <code class="highlighter-rouge">react-dom</code> in our JavaScript. In the screenshot above, the react version specified is <code class="highlighter-rouge">^16.3.2</code>. This means that npm will install the most recent major version matching 16.x.x. In contrast, you may also see something like <code class="highlighter-rouge">~1.2.3</code> in <strong><em>package.json</em></strong>, which will only install the most recent minor version matching 1.2.x.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">devDependencies</code> contains useful node modules and versions for using the React app in a development environment. Here, it contains one dependency, <code class="highlighter-rouge">react-scripts</code>, which provides a set of useful development scripts for working with React.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">scripts</code> specifies aliases that you can use to access some of the react-scripts commands in a more efficient manner. For example running <code class="highlighter-rouge">npm test</code> in your command line will run <code class="highlighter-rouge">react-scripts test --env=jsdom</code> behind the scenes.</p>
+  </li>
+</ul>
+
+<h2 id="node_modules">node_modules</h2>
+
+<p>This directory contains dependencies and sub-dependencies of packages used by the current React app, as specified by <strong><em>package.json</em></strong>. If you take a look, you may be surprised by how many there are.</p>
+
+<p>Running <code class="highlighter-rouge">ls -1 | wc -l</code> within the <strong><em>node_modules/</em></strong> directory will yield more than 800 subfolders. This folder is automatically added to the <strong><em>.gitignore</em></strong> for good reason! Don’t worry, even with all these dependencies, the basic app will only be around 50 KB after being minified and compressed for production.</p>
+
+<h2 id="package-lockjson">package-lock.json</h2>
+
+<p>This file contains the exact dependency tree installed in <strong><em>node_modules/</em></strong>. This provides a way for teams working on private apps to ensure that they have the same version of dependencies and sub-dependencies. It also contains a history of changes to package.json, so you can quickly look back at dependency changes.</p>
+
+<h2 id="public">public</h2>
+
+<p>This directory contains assets that will be served directly without additional processing by webpack. <strong><em>index.html</em></strong> provides the entry point for the web app. You will also see a favicon (header icon) and a <strong><em>manifest.json</em></strong>.</p>
+
+<p>The manifest file configures how your web app will behave if it is added to an Android user’s home screen (Android users can “shortcut” web apps and load them directly from the Android UI). You can read more about it <a href="https://developers.google.com/web/fundamentals/web-app-manifest/">here</a>.</p>
+
+<h2 id="src">src</h2>
+
+<p>This contains the JavaScript that will be processed by webpack and is the heart of the React app. Browsing this folder, you see the main App JavaScript component (<strong><em>App.js</em></strong>), its associated styles (<strong><em>App.css</em></strong>), and test suite (<strong><em>App.test.js</em></strong>). index.js and its styles (<strong><em>index.css</em></strong>) provide an entry into the App and also kicks off the <strong><em>registerServiceWorker.js</em></strong>. This service worker takes care of caching and updating files for the end-user. It allows for offline capability and faster page loads after the initial visit. More on this methodology is available <a href="https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#making-a-progressive-web-app">here</a>.</p>
+
+<p>As your React app grows, it is common to add a <strong><em>components/</em></strong> directory to organize components and component-related files and a views directory to organize React views and view-related files.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-14">May 14, 2018</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/install-create-react-app" class="pagination--pager" title="Installation
+">Previous</a>
+    
+    
+      <a href="/starting-the-create-react-app-development-server" class="pagination--pager" title="Starting the Create React App Development Server
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://github.com/Bunlong"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+      <li><a href="https://twitter.com/BunlongVan"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+    
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">Copyright &copy; 2018 React</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>
