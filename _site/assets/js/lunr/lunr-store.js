@@ -18,4 +18,24 @@ var store = [{
         "excerpt":"As was stated in the success message when you ran create-react-app, you just need to run npm start in your app directory to begin serving the development server. It should auto-open a tab in your browser that points to http://localhost:3000/ (if not, manually visit that address). You will be greeted...","categories": [],
         "tags": [],
         "url": "/starting-the-create-react-app-development-server",
+        "teaser":null},{
+        "title": "Organize Folder Structure",
+        "excerpt":"There are numerous ways to organize a react app using redux and you can spend a lot of time reading about them. We want to introduce you to one, the one we use. It’s only one way and we’ve found it to work over time and stay simple to understand...","categories": [],
+        "tags": [],
+        "url": "/organize-folder-structure",
+        "teaser":null},{
+        "title": "What is Redux?",
+        "excerpt":"Let’s see what the documentation says. Redux is a predictable state container for JavaScript apps. Redux makes it easy to manage the state of your application. Another way of looking at this it helps you manage the data you display and how you respond to user actions. – Credits go...","categories": [],
+        "tags": [],
+        "url": "/what-is-redux",
+        "teaser":null},{
+        "title": "Redux Inspiration",
+        "excerpt":"Dan Abramov created Redux to make development more fun with better tooling. He’s the guy who’s written some amazing modules like create-react-app, react-hot-loader and react-dnd. He wanted a minimal API that improved the application structure and had better tools. Redux makes data management and debugging a whole lot easier. ","categories": [],
+        "tags": [],
+        "url": "/redux-inspiration",
+        "teaser":null},{
+        "title": "Unidirectional Data Flow Architecture",
+        "excerpt":"Redux was inspired by Flux and Elm. Facebook was facing problems with the MVC structure. The Model and View relationships can get tricky. This is especially true as your application starts to scale. You could be dealing with problems such as infinite loops. That’s when Facebook introduced Flux. A unidirectional...","categories": [],
+        "tags": [],
+        "url": "/unidirectional-data-flow-architecture",
         "teaser":null},]

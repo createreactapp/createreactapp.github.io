@@ -1,16 +1,29 @@
 # main links
 docs:
-  - title: Getting Started
+  - title: Introduction
     children:
       - title: "What is Create React App?"
         url: /
+  - title: Get Started
+    children:
       - title: "Installation"
         url: /install-create-react-app
       - title: "Structure"
         url: /create-react-app-structure
       - title: "Create React App Development Server"
         url: /starting-the-create-react-app-development-server
-        
+  # - title: Redux
+  #   children:
+  #     - title: "What is Redux?"
+  #       url: /what-is-redux
+  #     - title: "Redux Inspiration"
+  #       url: /redux-inspiration
+  #     - title: "Unidirectional Data Flow"
+  #       url: /unidirectional-data-flow-architecture
+  # - title: Structure
+  #   children:
+  #     - title: "Organize Structure"
+  #       url: /organize-folder-structure
       # - title: "Structure"
       #   url: /structure/
       # - title: "Installation"
