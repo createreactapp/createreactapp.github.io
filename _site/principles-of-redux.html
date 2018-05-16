@@ -9,19 +9,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>What is Create React App? - Create React App</title>
-<meta name="description" content="Create React App is a tool built by developers at Facebook to help you build React applications.">
+<!-- begin _includes/seo.html --><title>Principles of Redux - Create React App</title>
+<meta name="description" content="Learn Create React App">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Create React App">
-<meta property="og:title" content="What is Create React App?">
-<meta property="og:url" content="/">
+<meta property="og:title" content="Principles of Redux">
+<meta property="og:url" content="/principles-of-redux">
 
 
-  <meta property="og:description" content="Create React App is a tool built by developers at Facebook to help you build React applications.">
+  <meta property="og:description" content="Learn Create React App">
 
 
 
@@ -30,9 +30,9 @@
 
 
   <meta name="twitter:site" content="@BunlongVan">
-  <meta name="twitter:title" content="What is Create React App?">
-  <meta name="twitter:description" content="Create React App is a tool built by developers at Facebook to help you build React applications.">
-  <meta name="twitter:url" content="/">
+  <meta name="twitter:title" content="Principles of Redux">
+  <meta name="twitter:description" content="Learn Create React App">
+  <meta name="twitter:url" content="/principles-of-redux">
 
   
     <meta name="twitter:card" content="summary">
@@ -49,7 +49,7 @@
 
 
 
-  <meta property="article:modified_time" content="2018-05-15T02:58:49+07:00">
+  <meta property="article:modified_time" content="2018-05-17T02:58:49+07:00">
 
 
 
@@ -58,7 +58,7 @@
   
 
 
-<link rel="canonical" href="/">
+<link rel="canonical" href="/principles-of-redux">
 
 
 
@@ -196,7 +196,7 @@
             
             
 
-            <li><a href="/" class="active">What is Create React App?</a></li>
+            <li><a href="/" class="">What is Create React App?</a></li>
           
         </ul>
         
@@ -276,7 +276,7 @@
             
             
 
-            <li><a href="/principles-of-redux" class="">Principles of Redux</a></li>
+            <li><a href="/principles-of-redux" class="active">Principles of Redux</a></li>
           
             
             
@@ -298,15 +298,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="What is Create React App?">
-    <meta itemprop="description" content="Create React App is a tool built by developers at Facebook to help you build React applications.">
+    <meta itemprop="headline" content="Principles of Redux">
+    <meta itemprop="description" content="">
     
-    <meta itemprop="dateModified" content="May 14, 2018">
+    <meta itemprop="dateModified" content="May 16, 2018">
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">What is Create React App?
+          <h1 id="page-title" class="page__title" itemprop="headline">Principles of Redux
 </h1>
           
         </header>
@@ -314,9 +314,48 @@
 
       <section class="page__content" itemprop="text">
         
-        <p><a href="https://github.com/facebook/create-react-app">Create React App</a> is a tool built by developers at Facebook to help you build React applications. It saves you from time-consuming setup and configuration. You simply run one command and create react app sets up the tools you need to start your React project.</p>
+          <aside class="sidebar__right">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#single-source-of-truth">Single Source of Truth</a></li>
+  <li><a href="#state-is-read-only">State is Read Only</a></li>
+  <li><a href="#changes-are-made-with-pure-functions">Changes are Made with Pure Functions</a></li>
+</ul>
+            </nav>
+          </aside>
+        
+        <p>Redux can be described in three fundamental principles:</p>
 
-<p><img src="/assets/images/react.png" alt="React" /></p>
+<h2 id="single-source-of-truth">Single Source of Truth</h2>
+
+<blockquote>
+  <p>The state of your whole application is stored in an object tree within a single store.</p>
+</blockquote>
+
+<p>The state of all the components (pieces) of your application depends on one root object tree within a single store.</p>
+
+<p>This makes your application easier to look at as a whole. Debugging becomes easier too. This also makes it easy to write the state locally (or on a server) and rehydrate it later.</p>
+
+<h2 id="state-is-read-only">State is Read Only</h2>
+
+<blockquote>
+  <p>The only way to change the state is to emit an action, an object describing what happened.</p>
+</blockquote>
+
+<p><strong><em>Views cannot change the state directly!</em></strong></p>
+
+<p>In Redux, you dispatch actions, these actions tell a function (called reducer) to update the state. Redux docs also recommend not mutating the state. Each action instructs the reducer to replace the existing state with a new version.</p>
+
+<h2 id="changes-are-made-with-pure-functions">Changes are Made with Pure Functions</h2>
+
+<blockquote>
+  <p>To specify how the state tree is transformed by actions, you write pure reducers.</p>
+</blockquote>
+
+<p>A reducer is a pure function. This function takes the current state and an action, and return a new state [Remember to return new state objects]. It DOES NOT mutate the state.</p>
+
+<p>You can start with a single reducer, and as your app grows, split it off into smaller reducers that manage specific parts of the state tree. Because reducers are just functions, you can control the order in which they are called, pass additional data, or even make reusable reducers for common tasks such as pagination.</p>
 
         
       </section>
@@ -327,7 +366,7 @@
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-14">May 14, 2018</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-16">May 16, 2018</time></p>
         
       </footer>
 
@@ -336,10 +375,11 @@
       
   <nav class="pagination">
     
-      <a href="#" class="pagination--pager disabled">Previous</a>
+      <a href="/unidirectional-data-flow-architecture" class="pagination--pager" title="Unidirectional Data Flow Architecture
+">Previous</a>
     
     
-      <a href="/install-create-react-app" class="pagination--pager" title="Installation
+      <a href="/pillars-of-redux" class="pagination--pager" title="Pillars of Redux
 ">Next</a>
     
   </nav>

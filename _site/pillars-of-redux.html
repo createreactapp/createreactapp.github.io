@@ -9,19 +9,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>What is Create React App? - Create React App</title>
-<meta name="description" content="Create React App is a tool built by developers at Facebook to help you build React applications.">
+<!-- begin _includes/seo.html --><title>Pillars of Redux - Create React App</title>
+<meta name="description" content="Learn Create React App">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Create React App">
-<meta property="og:title" content="What is Create React App?">
-<meta property="og:url" content="/">
+<meta property="og:title" content="Pillars of Redux">
+<meta property="og:url" content="/pillars-of-redux">
 
 
-  <meta property="og:description" content="Create React App is a tool built by developers at Facebook to help you build React applications.">
+  <meta property="og:description" content="Learn Create React App">
 
 
 
@@ -30,9 +30,9 @@
 
 
   <meta name="twitter:site" content="@BunlongVan">
-  <meta name="twitter:title" content="What is Create React App?">
-  <meta name="twitter:description" content="Create React App is a tool built by developers at Facebook to help you build React applications.">
-  <meta name="twitter:url" content="/">
+  <meta name="twitter:title" content="Pillars of Redux">
+  <meta name="twitter:description" content="Learn Create React App">
+  <meta name="twitter:url" content="/pillars-of-redux">
 
   
     <meta name="twitter:card" content="summary">
@@ -49,7 +49,7 @@
 
 
 
-  <meta property="article:modified_time" content="2018-05-15T02:58:49+07:00">
+  <meta property="article:modified_time" content="2018-05-17T02:58:49+07:00">
 
 
 
@@ -58,7 +58,7 @@
   
 
 
-<link rel="canonical" href="/">
+<link rel="canonical" href="/pillars-of-redux">
 
 
 
@@ -196,7 +196,7 @@
             
             
 
-            <li><a href="/" class="active">What is Create React App?</a></li>
+            <li><a href="/" class="">What is Create React App?</a></li>
           
         </ul>
         
@@ -284,7 +284,7 @@
             
             
 
-            <li><a href="/pillars-of-redux" class="">Pillars of Redux</a></li>
+            <li><a href="/pillars-of-redux" class="active">Pillars of Redux</a></li>
           
         </ul>
         
@@ -298,15 +298,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="What is Create React App?">
-    <meta itemprop="description" content="Create React App is a tool built by developers at Facebook to help you build React applications.">
+    <meta itemprop="headline" content="Pillars of Redux">
+    <meta itemprop="description" content="">
     
-    <meta itemprop="dateModified" content="May 14, 2018">
+    <meta itemprop="dateModified" content="May 16, 2018">
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">What is Create React App?
+          <h1 id="page-title" class="page__title" itemprop="headline">Pillars of Redux
 </h1>
           
         </header>
@@ -314,9 +314,69 @@
 
       <section class="page__content" itemprop="text">
         
-        <p><a href="https://github.com/facebook/create-react-app">Create React App</a> is a tool built by developers at Facebook to help you build React applications. It saves you from time-consuming setup and configuration. You simply run one command and create react app sets up the tools you need to start your React project.</p>
+          <aside class="sidebar__right">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#action">Action</a></li>
+  <li><a href="#dispatch">Dispatch</a></li>
+  <li><a href="#reducers">Reducers</a></li>
+  <li><a href="#store">Store</a></li>
+</ul>
+            </nav>
+          </aside>
+        
+        <p>Now that you’re familiar with the principles of Redux, let’s dive deeper.</p>
 
-<p><img src="/assets/images/react.png" alt="React" /></p>
+<p>We’re going to look at the technical implementation of those principles. Once you’ve got a basic of the concepts below, you’ll be ready to move on to some code in next chepter.</p>
+
+<p>The store holds the application state and gives access to some useful methods.</p>
+
+<h2 id="action">Action</h2>
+
+<p>Actions are plain JavaScript objects. They usually have a payload and always have a type.</p>
+
+<p class="notice--warning"><strong>Note:</strong> Redux does not have explicit rules for how you should structure actions. In fact, Redux doesn’t have any strict rules other than the three principles.</p>
+
+<p>Redux recommends that you give each action a type and that’s a good idea. I also recommend using payload to store any more information related to the action. This keeps everything consistent.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const action = {
+  type: 'TOGGLE_TODO',
+  payload: { id: 7 }
+};
+</code></pre></div></div>
+
+<h2 id="dispatch">Dispatch</h2>
+
+<p>This dispatches an action. It is the only way to update the application state.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const action = {
+  type: 'TOGGLE_TODO',
+  payload: { id: 9 }
+};
+
+store.dispatch(action);
+</code></pre></div></div>
+
+<h2 id="reducers">Reducers</h2>
+
+<p>Reducers are the pure functions. They know what to do with an action and its information (payload).</p>
+
+<p>They take in the current state and an action, and return a new state.</p>
+
+<p>Unlike Flux, Redux has a single store. Your entire applications state is in one object. That means using a single reducer function is not practical. We’d end up with a 1000 lines file that nobody would want to read.</p>
+
+<p>Redux gives us the ability to split these reducers into separate files. We aren’t going to dive into reducer composition in this chepter. We’ll cover that in upcoming chepter.</p>
+
+<h2 id="store">Store</h2>
+
+<p>The store is the soul of Redux. The store is the single source of truth for the application (mentioned in <a href="/principles-of-redux">previous chapter</a>).</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import { createStore } from 'redux';
+import rootReducer from './reducers';
+
+const store = createStore(rootReducer);
+</code></pre></div></div>
 
         
       </section>
@@ -327,7 +387,7 @@
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-14">May 14, 2018</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-16">May 16, 2018</time></p>
         
       </footer>
 
@@ -336,11 +396,11 @@
       
   <nav class="pagination">
     
-      <a href="#" class="pagination--pager disabled">Previous</a>
+      <a href="/principles-of-redux" class="pagination--pager" title="Principles of Redux
+">Previous</a>
     
     
-      <a href="/install-create-react-app" class="pagination--pager" title="Installation
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 

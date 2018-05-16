@@ -38,4 +38,14 @@ var store = [{
         "excerpt":"Redux was inspired by Flux and Elm. Facebook was facing problems with the MVC structure. The Model and View relationships can get tricky. This is especially true as your application starts to scale. You could be dealing with problems such as infinite loops. That’s when Facebook introduced Flux. A unidirectional...","categories": [],
         "tags": [],
         "url": "/unidirectional-data-flow-architecture",
+        "teaser":null},{
+        "title": "Principles of Redux",
+        "excerpt":"Redux can be described in three fundamental principles: Single Source of Truth The state of your whole application is stored in an object tree within a single store. The state of all the components (pieces) of your application depends on one root object tree within a single store. This makes...","categories": [],
+        "tags": [],
+        "url": "/principles-of-redux",
+        "teaser":null},{
+        "title": "Pillars of Redux",
+        "excerpt":"Now that you’re familiar with the principles of Redux, let’s dive deeper. We’re going to look at the technical implementation of those principles. Once you’ve got a basic of the concepts below, you’ll be ready to move on to some code in next chepter. The store holds the application state...","categories": [],
+        "tags": [],
+        "url": "/pillars-of-redux",
         "teaser":null},]
