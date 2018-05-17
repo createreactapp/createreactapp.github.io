@@ -24,6 +24,8 @@ docs:
         url: /principles-of-redux
       - title: "Pillars of Redux"
         url: /pillars-of-redux
+      - title: "Usage with Redux"
+        url: /usage-with-redux
   # - title: Structure
   #   children:
   #     - title: "Organize Structure"

@@ -22,19 +22,23 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     colorator (1.1.0)
     concurrent-ruby (1.0.5)
+    concurrent-ruby (1.0.5-java)
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
     eventmachine (1.2.7)
+    eventmachine (1.2.7-java)
     faraday (0.15.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.23)
+    ffi (1.9.23-java)
     forwardable-extended (2.6.0)
     gemoji (3.0.0)
     html-pipeline (2.8.0)
       activesupport (>= 2)
       nokogiri (>= 1.4)
     http_parser.rb (0.6.0)
+    http_parser.rb (0.6.0-java)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     jekyll (3.8.1)
@@ -79,6 +83,7 @@ GEM
     multipart-post (2.0.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
+    nokogiri (1.8.2-java)
     octokit (4.9.0)
       sawyer (~> 0.8.0, >= 0.5.3)
     pathutil (0.16.1)
@@ -100,10 +105,12 @@ GEM
       addressable (>= 2.3.5, < 2.6)
       faraday (~> 0.8, < 1.0)
     thread_safe (0.3.6)
+    thread_safe (0.3.6-java)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
 
 PLATFORMS
+  java
   ruby
 
 DEPENDENCIES
