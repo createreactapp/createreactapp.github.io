@@ -1,0 +1,756 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.11.2 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Usage with React - Create React App</title>
+<meta name="description" content="Learn Create React App">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Create React App">
+<meta property="og:title" content="Usage with React">
+<meta property="og:url" content="/usage-with-redux">
+
+
+  <meta property="og:description" content="Learn Create React App">
+
+
+
+  <meta property="og:image" content="/assets/images/learn-create-react-app.png">
+
+
+
+  <meta name="twitter:site" content="@BunlongVan">
+  <meta name="twitter:title" content="Usage with React">
+  <meta name="twitter:description" content="Learn Create React App">
+  <meta name="twitter:url" content="/usage-with-redux">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="/assets/images/learn-create-react-app.png">
+    
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2018-05-17T15:27:30+07:00">
+
+
+
+  <meta property="article:modified_time" content="2018-05-18T02:58:49+07:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/usage-with-redux">
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": null,
+      "logo": "/assets/images/learn-create-react-app.png"
+    }
+  </script>
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "React",
+      "url": null,
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Create React App Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+<link rel="icon" href="/assets/images/favicon.ico">
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/">Create React App</a>
+        <ul class="visible-links">
+          
+        </ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">Introduction</span>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/" class="">What is Create React App?</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Get Started</span>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/install-create-react-app" class="">Installation</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/create-react-app-structure" class="">Structure</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/starting-the-create-react-app-development-server" class="">Create React App Development Server</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Redux</span>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/what-is-redux" class="">What is Redux?</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/redux-inspiration" class="">Redux Inspiration</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/unidirectional-data-flow-architecture" class="">Unidirectional Data Flow</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/principles-of-redux" class="">Principles of Redux</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/pillars-of-redux" class="">Pillars of Redux</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/usage-with-redux" class="active">Usage with Redux</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+    
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Usage with React">
+    <meta itemprop="description" content="">
+    
+    <meta itemprop="dateModified" content="May 18, 2018">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Usage with React
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#installing-crate-react-app">Installing Crate React APP</a></li>
+  <li><a href="#installing-react-redux">Installing React Redux</a></li>
+  <li><a href="#presentational-and-container-components">Presentational and Container Components</a></li>
+  <li><a href="#designing-component-hierarchy">Designing Component Hierarchy</a>
+    <ul>
+      <li><a href="#designing-presentational-components">Designing Presentational Components</a></li>
+      <li><a href="#designing-container-components">Designing Container Components</a></li>
+      <li><a href="#designing-other-components">Designing Other Components</a></li>
+    </ul>
+  </li>
+  <li><a href="#implementing-components">Implementing Components</a>
+    <ul>
+      <li><a href="#implementing-presentational-components">Implementing Presentational Components</a></li>
+      <li><a href="#implementing-container-components">Implementing Container Components</a></li>
+      <li><a href="#implementing-other-components">Implementing Other Components</a></li>
+      <li><a href="#tying-the-containers-together-within-a-component">Tying the containers together within a component</a></li>
+    </ul>
+  </li>
+  <li><a href="#passing-the-store">Passing the Store</a></li>
+</ul>
+            </nav>
+          </aside>
+        
+        <p>From the very beginning, we need to stress that Redux has no relation to React. You can write Redux apps with React using Crate React App.</p>
+
+<p>That said, Redux works especially well with libraries like React because they let you describe UI as a function of state, and Redux emits state updates in response to actions</p>
+
+<p>We will use React to build a very simple todo app.</p>
+
+<h2 id="installing-crate-react-app">Installing Crate React APP</h2>
+
+<p>To get React projects up and running quickly with Create React App, get a look the <a href="/install-create-react-app">previous chapter</a>.</p>
+
+<h2 id="installing-react-redux">Installing React Redux</h2>
+
+<p>​React bindings are not included in Redux by default. You need to install them:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install --save react-redux
+</code></pre></div></div>
+
+<h2 id="presentational-and-container-components">Presentational and Container Components</h2>
+
+<p>React bindings for Redux embrace the idea of <strong><em>separating presentational and container components</em></strong>. If you’re not familiar with these terms, <a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0">read about them first</a>, and then come back. They are important.</p>
+
+<p>Finished reading the article? Let’s recount their differences:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"> </th>
+      <th style="text-align: left">Presentational Components</th>
+      <th style="text-align: left">Container Components</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Purpose</td>
+      <td style="text-align: left">How things look (markup, styles)</td>
+      <td style="text-align: left">How things work (data fetching, state updates)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Aware of Redux</td>
+      <td style="text-align: left">No</td>
+      <td style="text-align: left">Yes</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">To read data</td>
+      <td style="text-align: left">Read data from props</td>
+      <td style="text-align: left">Subscribe to Redux state</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">To change data</td>
+      <td style="text-align: left">Invoke callbacks from props</td>
+      <td style="text-align: left">Dispatch Redux actions</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Are written</td>
+      <td style="text-align: left">By hand</td>
+      <td style="text-align: left">Usually generated by React Redux</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Most of the components we’ll write will be presentational, but we’ll need to generate a few container components to connect them to the Redux store.</p>
+
+<p>Technically you could write the container components by hand using <code class="highlighter-rouge">store.subscribe()</code>. We don’t advise you to do this because React Redux makes many performance optimizations that are hard to do by hand. For this reason, rather than write container components, we will generate them using the <code class="highlighter-rouge">connect()</code> function provided by React Redux.</p>
+
+<h2 id="designing-component-hierarchy">Designing Component Hierarchy</h2>
+
+<p>Our design brief is very simple. We want to show a list of todo items. We want to show a field where the user may add a new todo.</p>
+
+<h3 id="designing-presentational-components">Designing Presentational Components</h3>
+
+<p>I see the following presentational components and their props emerge from this brief:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">TodoList</code> is a list showing visible todos.
+    <ul>
+      <li><code class="highlighter-rouge">todos: Array</code> is an array of todo items with <code class="highlighter-rouge">{ id, text }</code> shape.</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">Todo</code> is a single todo item.
+    <ul>
+      <li><code class="highlighter-rouge">text: string</code> is the text to show.</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">App</code> is the root component that renders everything else.</li>
+</ul>
+
+<p>They describe the look but don’t know where the data comes from, or how to change it. They only render what’s given to them. If you migrate from Redux to something else, you’ll be able to keep all these components exactly the same. They have no dependency on Redux.</p>
+
+<h3 id="designing-container-components">Designing Container Components</h3>
+
+<p>We will also need some container components to connect the presentational components to Redux. For example, the presentational TodoList component needs a container like TodoList that subscribes to the Redux store and knows how to apply the current visibility filter.</p>
+
+<ul>
+  <li>TodoList filters the todos according to the current visibility filter and renders a TodoList.</li>
+</ul>
+
+<h3 id="designing-other-components">Designing Other Components</h3>
+
+<p>Sometimes it’s hard to tell if some component should be a presentational component or a container. For example, sometimes form and function are really coupled together, such as in the case of this tiny component:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">AddTodo</code> is an input field with an “Add” button</li>
+</ul>
+
+<p>Technically we could split it into two components but it might be too early at this stage. It’s fine to mix presentation and logic in a component that is very small. As it grows, it will be more obvious how to split it, so we’ll leave it mixed.</p>
+
+<h2 id="implementing-components">Implementing Components</h2>
+
+<p>Let’s write the components! We begin with the presentational components so we don’t need to think about binding to Redux yet.</p>
+
+<h3 id="implementing-presentational-components">Implementing Presentational Components</h3>
+
+<p>These are all normal React components, so we won’t examine them in detail. We write functional stateless components unless we need to use local state or the lifecycle methods. This doesn’t mean that presentational components have to be functions—it’s just easier to define them this way. If and when you need to add local state, lifecycle methods, or performance optimizations, you can convert them to classes.</p>
+
+<p><code class="highlighter-rouge">components/Todo.js</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React from 'react'
+import PropTypes from 'prop-types'
+
+const Todo = ({ onClick, completed, text }) =&gt; (
+  &lt;li
+    onClick={onClick}
+    style={ {textDecoration: completed ? 'line-through' : 'none'}}
+  &gt;
+    {text}
+  &lt;/li&gt;
+)
+
+Todo.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  completed: PropTypes.bool.isRequired,
+  text: PropTypes.string.isRequired
+}
+
+export default Todo
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">components/TodoList.js</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React from 'react'
+import PropTypes from 'prop-types'
+import Todo from './Todo'
+
+const TodoList = ({ todos, toggleTodo }) =&gt; (
+  &lt;ul&gt;
+    {todos.map(todo =&gt;
+      &lt;Todo
+        key={todo.id}
+        {...todo} 
+        onClick={() =&gt; toggleTodo(todo.id)}
+      /&gt;
+    )}
+  &lt;/ul&gt;
+)
+
+TodoList.propTypes = {
+  todos: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    completed: PropTypes.bool.isRequired,
+    text: PropTypes.string.isRequired
+  }).isRequired).isRequired,
+  toggleTodo: PropTypes.func.isRequired
+}
+
+export default TodoList
+</code></pre></div></div>
+
+<h3 id="implementing-container-components">Implementing Container Components</h3>
+
+<p>Now it’s time to hook up those presentational components to Redux by creating some containers. Technically, a container component is just a React component that uses <code class="highlighter-rouge">store.subscribe()</code> to read a part of the Redux state tree and supply props to a presentational component it renders. You could write a container component by hand, but we suggest instead generating container components with the React Redux library’s <code class="highlighter-rouge">connect()</code> function, which provides many useful optimizations to prevent unnecessary re-renders. (One result of this is that you shouldn’t have to worry about the React performance suggestion of implementing shouldComponentUpdate yourself.)</p>
+
+<p>To use <code class="highlighter-rouge">connect()</code>, you need to define a special function called <code class="highlighter-rouge">mapStateToProps</code> that tells how to transform the current Redux store state into the props you want to pass to a presentational component you are wrapping. For example, VisibleTodoList needs to calculate todos to pass to the TodoList, so we define a function that filters the state.todos according to the state.visibilityFilter, and use it in its mapStateToProps:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import { connect } from 'react-redux'
+import { toggleTodo } from '../actions'
+import TodoList from '../components/TodoList'
+import { VisibilityFilters } from '../actions'
+
+const getVisibleTodos = (todos, filter) =&gt; {
+  switch (filter) {
+    case VisibilityFilters.SHOW_ALL:
+      return todos
+    default:
+      throw new Error('Unknown filter: ' + filter)
+  }
+}
+
+const mapStateToProps = state =&gt; ({
+  todos: getVisibleTodos(state.todos, state.visibilityFilter)
+})
+</code></pre></div></div>
+
+<p>In addition to reading the state, container components can dispatch actions. In a similar fashion, you can define a function called <code class="highlighter-rouge">mapDispatchToProps()</code> that receives the <code class="highlighter-rouge">dispatch()</code> method and returns callback props that you want to inject into the presentational component. For example, we want the <code class="highlighter-rouge">VisibleTodoList</code> to inject a prop called <code class="highlighter-rouge">toggleTodo</code> into the TodoList component, and we want <code class="highlighter-rouge">toggleTodo</code> to dispatch a TOGGLE_TODO action:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const mapDispatchToProps = dispatch =&gt; ({
+  toggleTodo: id =&gt; dispatch(toggleTodo(id))
+})
+</code></pre></div></div>
+
+<p>Finally, we create the <code class="highlighter-rouge">VisibleTodoList</code> by calling connect() and passing these two functions:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const VisibleTodoList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoList)
+​
+export default VisibleTodoList
+</code></pre></div></div>
+
+<p>These are the basics of the React Redux API, but there are a few shortcuts and power options so we encourage you to check out its <a href="https://github.com/reduxjs/react-redux">documentation</a> in detail. In case you are worried about mapStateToProps creating new objects too often, you might want to learn about <a href="https://redux.js.org/recipes/computing-derived-data">computing derived data</a> with <a href="https://github.com/reduxjs/reselect">reselect</a>.</p>
+
+<p>Find the rest of the container components defined below:</p>
+
+<p><code class="highlighter-rouge">containers/TodoList.js</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import { connect } from 'react-redux'
+import { toggleTodo } from '../actions'
+import TodoList from '../components/TodoList'
+import { VisibilityFilters } from '../actions'
+
+const getVisibleTodos = (todos, filter) =&gt; {
+  switch (filter) {
+    case VisibilityFilters.SHOW_ALL:
+      return todos
+    default:
+      throw new Error('Unknown filter: ' + filter)
+  }
+}
+
+const mapStateToProps = state =&gt; ({
+  todos: getVisibleTodos(state.todos, state.visibilityFilter)
+})
+
+const mapDispatchToProps = dispatch =&gt; ({
+  toggleTodo: id =&gt; dispatch(toggleTodo(id))
+})
+
+const VisibleTodoList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoList)
+​
+export default VisibleTodoList
+</code></pre></div></div>
+
+<h3 id="implementing-other-components">Implementing Other Components</h3>
+
+<p><code class="highlighter-rouge">containers/AddTodo.js</code></p>
+
+<p>Recall as mentioned previously, both the presentation and logic for the AddTodo component are mixed into a single definition.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React from 'react'
+import { connect } from 'react-redux'
+import { addTodo } from '../actions'
+
+const AddTodo = ({ dispatch }) =&gt; {
+  let input
+
+  return (
+    &lt;div&gt;
+      &lt;form onSubmit={e =&gt; {
+        e.preventDefault()
+        if (!input.value.trim()) {
+          return
+        }
+        dispatch(addTodo(input.value))
+        input.value = ''
+      }}&gt;
+        &lt;input ref={node =&gt; input = node} /&gt;
+        &lt;button type="submit"&gt;
+          Add Todo
+        &lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  )
+}
+
+export default connect()(AddTodo)
+
+</code></pre></div></div>
+
+<p>If you are unfamiliar with the ref attribute, please read this <a href="https://reactjs.org/docs/refs-and-the-dom.html">documentation</a> to familiarize yourself with the recommended use of this attribute.</p>
+
+<h3 id="tying-the-containers-together-within-a-component">Tying the containers together within a component</h3>
+
+<p><code class="highlighter-rouge">components/App.js</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React from 'react'
+import AddTodo from '../containers/AddTodo'
+import VisibleTodoList from '../containers/VisibleTodoList'
+
+const App = () =&gt; (
+  &lt;div&gt;
+    &lt;AddTodo /&gt;
+    &lt;VisibleTodoList /&gt;
+  &lt;/div&gt;
+)
+
+export default App
+</code></pre></div></div>
+
+<h2 id="passing-the-store">Passing the Store</h2>
+
+<p>All container components need access to the Redux store so they can subscribe to it. One option would be to pass it as a prop to every container component. However it gets tedious, as you have to wire store even through presentational components just because they happen to render a container deep in the component tree.</p>
+
+<p>The option we recommend is to use a special React Redux component called <a href="https://github.com/reduxjs/react-redux/blob/master/docs/api.md#provider-store">provider</a> to <a href="https://reactjs.org/docs/context.html">magically</a> make the store available to all container components in the application without passing it explicitly. You only need to use it once when you render the root component:</p>
+
+<p><code class="highlighter-rouge">index.js</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React from 'react'
+import { render } from 'react-dom'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import App from './components/App'
+import rootReducer from './reducers'
+
+const store = createStore(rootReducer)
+
+render(
+  &lt;Provider store={store}&gt;
+    &lt;App /&gt;
+  &lt;/Provider&gt;,
+  document.getElementById('root')
+)
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-18">May 18, 2018</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/pillars-of-redux" class="pagination--pager" title="Pillars of Redux
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://github.com/Bunlong"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+      <li><a href="https://twitter.com/BunlongVan"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+    
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">Copyright &copy; 2018 React, Maintained by Bunlong</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

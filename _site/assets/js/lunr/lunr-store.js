@@ -48,4 +48,9 @@ var store = [{
         "excerpt":"Now that you’re familiar with the principles of Redux, let’s dive deeper. We’re going to look at the technical implementation of those principles. Once you’ve got a basic of the concepts below, you’ll be ready to move on to some code in next chepter. The store holds the application state...","categories": [],
         "tags": [],
         "url": "/pillars-of-redux",
+        "teaser":null},{
+        "title": "Usage with React",
+        "excerpt":"From the very beginning, we need to stress that Redux has no relation to React. You can write Redux apps with React using Crate React App. That said, Redux works especially well with libraries like React because they let you describe UI as a function of state, and Redux emits...","categories": [],
+        "tags": [],
+        "url": "/usage-with-redux",
         "teaser":null},]

@@ -1,5 +1,4 @@
 http://www.gistia.com/beginners-guide-redux/
-https://redux.js.org/advanced/async-actions
 https://redux.js.org/basics/usage-with-react
 
 ---
