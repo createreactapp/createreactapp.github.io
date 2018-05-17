@@ -63,4 +63,14 @@ var store = [{
         "excerpt":"We will use React to build a very simple app. Installing Crate React APP To get React projects up and running quickly with Create React App, get a look the previous chapter. Installing React Redux Open up your terminal and run: npm install --save react-router-domNow, we will add routes to...","categories": [],
         "tags": [],
         "url": "/add-a-router",
+        "teaser":null},{
+        "title": "Adding a Stylesheet",
+        "excerpt":"This project setup uses Webpack for handling all assets. Webpack offers a custom way of “extending” the concept of import beyond JavaScript. To express that a JavaScript file depends on a CSS file, you need to import the CSS from the JavaScript file: Button.css .Button { padding: 20px;}Button.js import React,...","categories": [],
+        "tags": [],
+        "url": "/add-a-stylesheet",
+        "teaser":null},{
+        "title": "Adding Bootstrap",
+        "excerpt":"You don’t have to use React Bootstrap together with React but it is a popular library for integrating Bootstrap with React apps. If you need it, you can integrate it with Create React App by following these steps: Install React Bootstrap and Bootstrap from npm. React Bootstrap does not include...","categories": [],
+        "tags": [],
+        "url": "/add-bootstrap",
         "teaser":null},]

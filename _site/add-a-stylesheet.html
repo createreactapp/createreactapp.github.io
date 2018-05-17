@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>What is Redux? - Create React App</title>
+<!-- begin _includes/seo.html --><title>Adding a Stylesheet - Create React App</title>
 <meta name="description" content="Learn Create React App">
 
 
@@ -17,8 +17,8 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Create React App">
-<meta property="og:title" content="What is Redux?">
-<meta property="og:url" content="/what-is-redux">
+<meta property="og:title" content="Adding a Stylesheet">
+<meta property="og:url" content="/add-a-stylesheet">
 
 
   <meta property="og:description" content="Learn Create React App">
@@ -30,9 +30,9 @@
 
 
   <meta name="twitter:site" content="@BunlongVan">
-  <meta name="twitter:title" content="What is Redux?">
+  <meta name="twitter:title" content="Adding a Stylesheet">
   <meta name="twitter:description" content="Learn Create React App">
-  <meta name="twitter:url" content="/what-is-redux">
+  <meta name="twitter:url" content="/add-a-stylesheet">
 
   
     <meta name="twitter:card" content="summary">
@@ -49,7 +49,7 @@
 
 
 
-  <meta property="article:modified_time" content="2018-05-17T02:58:49+07:00">
+  <meta property="article:modified_time" content="2018-05-18T02:58:49+07:00">
 
 
 
@@ -58,7 +58,7 @@
   
 
 
-<link rel="canonical" href="/what-is-redux">
+<link rel="canonical" href="/add-a-stylesheet">
 
 
 
@@ -280,7 +280,7 @@
             
             
 
-            <li><a href="/add-a-stylesheet" class="">Adding a Stylesheet</a></li>
+            <li><a href="/add-a-stylesheet" class="active">Adding a Stylesheet</a></li>
           
             
             
@@ -308,7 +308,7 @@
             
             
 
-            <li><a href="/what-is-redux" class="active">What is Redux?</a></li>
+            <li><a href="/what-is-redux" class="">What is Redux?</a></li>
           
             
             
@@ -370,15 +370,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="What is Redux?">
+    <meta itemprop="headline" content="Adding a Stylesheet">
     <meta itemprop="description" content="">
     
-    <meta itemprop="dateModified" content="May 16, 2018">
+    <meta itemprop="dateModified" content="May 17, 2018">
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">What is Redux?
+          <h1 id="page-title" class="page__title" itemprop="headline">Adding a Stylesheet
 </h1>
           
         </header>
@@ -386,23 +386,33 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>Let’s see what the documentation says.</p>
+        <p>This project setup uses <a href="https://webpack.js.org">Webpack</a> for handling all assets. Webpack offers a custom way of “extending” the concept of import beyond JavaScript. To express that a JavaScript file depends on a CSS file, you need to import the CSS from the JavaScript file:</p>
 
-<blockquote>
-  <p>Redux is a predictable state container for JavaScript apps.</p>
-</blockquote>
+<p><code class="highlighter-rouge">Button.css</code></p>
 
-<p>Redux makes it easy to manage the state of your application. Another way of looking at this it helps you manage the data you display and how you respond to user actions.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.Button {
+  padding: 20px;
+}
+</code></pre></div></div>
 
-<blockquote>
-  <p>– Credits go to Dan Abramov (creator of Redux)</p>
-</blockquote>
+<p><code class="highlighter-rouge">Button.js</code></p>
 
-<p>Our applications continue to increase in complexity. Every new feature makes it more challenging to think about how our Views and Models interact. A user interaction that affects one Model may have an uncontrollable cascading effect.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React, { Component } from 'react';
+import './Button.css'; // Tell Webpack that Button.js uses these styles
 
-<p>Model updates a View that updates another Model that…</p>
+class Button extends Component {
+  render() {
+    // You can use them as regular CSS styles
+    return &lt;div className="Button" /&gt;;
+  }
+}
+</code></pre></div></div>
 
-<p>Things you can’t keep track of as your application scales.</p>
+<p>This is not required for React but many people find this feature convenient. You can read about the benefits of this approach. However you should be aware that this makes your code less portable to other build tools and environments than Webpack.</p>
+
+<p>In development, expressing dependencies this way allows your styles to be reloaded on the fly as you edit them. In production, all CSS files will be concatenated into a single minified <code class="highlighter-rouge">.css</code> file in the build output.</p>
+
+<p>If you are concerned about using Webpack-specific semantics, you can put all your CSS right into <code class="highlighter-rouge">src/index.css</code>. It would still be imported from <code class="highlighter-rouge">src/index.js</code>, but you could always remove that import if you later migrate to a different build tool.</p>
 
         
       </section>
@@ -413,7 +423,7 @@
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-16">May 16, 2018</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-17">May 17, 2018</time></p>
         
       </footer>
 
@@ -422,11 +432,11 @@
       
   <nav class="pagination">
     
-      <a href="/starting-the-create-react-app-development-server" class="pagination--pager" title="Starting the Create React App Development Server
+      <a href="/add-a-router" class="pagination--pager" title="Adding a Router
 ">Previous</a>
     
     
-      <a href="/redux-inspiration" class="pagination--pager" title="Redux Inspiration
+      <a href="/add-bootstrap" class="pagination--pager" title="Adding Bootstrap
 ">Next</a>
     
   </nav>

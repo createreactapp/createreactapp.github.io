@@ -22,6 +22,8 @@ docs:
     children:
       - title: "Adding a Stylesheet"
         url: /add-a-stylesheet
+      - title: "Adding Bootstrap"
+        url: /add-bootstrap
   - title: Redux
     children:
       - title: "What is Redux?"
