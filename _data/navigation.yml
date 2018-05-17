@@ -26,6 +26,8 @@ docs:
         url: /pillars-of-redux
       - title: "Usage with Redux"
         url: /usage-with-redux
+      - title: "Example Todo List"
+        url: /example-todo-list
   # - title: Structure
   #   children:
   #     - title: "Organize Structure"

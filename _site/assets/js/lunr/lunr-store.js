@@ -19,11 +19,6 @@ var store = [{
         "tags": [],
         "url": "/starting-the-create-react-app-development-server",
         "teaser":null},{
-        "title": "Organize Folder Structure",
-        "excerpt":"There are numerous ways to organize a react app using redux and you can spend a lot of time reading about them. We want to introduce you to one, the one we use. It’s only one way and we’ve found it to work over time and stay simple to understand...","categories": [],
-        "tags": [],
-        "url": "/organize-folder-structure",
-        "teaser":null},{
         "title": "What is Redux?",
         "excerpt":"Let’s see what the documentation says. Redux is a predictable state container for JavaScript apps. Redux makes it easy to manage the state of your application. Another way of looking at this it helps you manage the data you display and how you respond to user actions. – Credits go...","categories": [],
         "tags": [],
@@ -53,4 +48,9 @@ var store = [{
         "excerpt":"From the very beginning, we need to stress that Redux has no relation to React. You can write Redux apps with React using Crate React App. That said, Redux works especially well with libraries like React because they let you describe UI as a function of state, and Redux emits...","categories": [],
         "tags": [],
         "url": "/usage-with-redux",
+        "teaser":null},{
+        "title": "Example Todo List",
+        "excerpt":"This is the complete source code of the tiny todo app we built during the basics tutorial. Entry Point index.js import React from 'react'import { render } from 'react-dom'import { createStore } from 'redux'import { Provider } from 'react-redux'import App from './components/App'import rootReducer from './reducers'const store = createStore(rootReducer)render( &lt;Provider store={store}&gt;...","categories": [],
+        "tags": [],
+        "url": "/example-todo-list",
         "teaser":null},]

@@ -17,10 +17,6 @@
 <lastmod>2018-05-15T02:58:49+07:00</lastmod>
 </url>
 <url>
-<loc>/organize-folder-structure</loc>
-<lastmod>2018-05-17T02:58:49+07:00</lastmod>
-</url>
-<url>
 <loc>/what-is-redux</loc>
 <lastmod>2018-05-17T02:58:49+07:00</lastmod>
 </url>
@@ -42,6 +38,10 @@
 </url>
 <url>
 <loc>/usage-with-redux</loc>
+<lastmod>2018-05-18T02:58:49+07:00</lastmod>
+</url>
+<url>
+<loc>/example-todo-list</loc>
 <lastmod>2018-05-18T02:58:49+07:00</lastmod>
 </url>
 <url>

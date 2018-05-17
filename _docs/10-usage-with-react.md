@@ -52,17 +52,20 @@ I see the following presentational components and their props emerge from this b
 
 * `TodoList` is a list showing visible todos.
   * `todos: Array` is an array of todo items with `{ id, text }` shape.
+  * `onTodoClick(id: number)` is a callback to invoke when a todo is clicked.
 * `Todo` is a single todo item.
   * `text: string` is the text to show.
+  * `completed: boolean` is whether the todo should appear crossed out.
+  * `onClick()` is a callback to invoke when the todo is clicked.
 * `App` is the root component that renders everything else.
 
 They describe the look but don't know where the data comes from, or how to change it. They only render what's given to them. If you migrate from Redux to something else, you'll be able to keep all these components exactly the same. They have no dependency on Redux.
 
 ### Designing Container Components
 
-We will also need some container components to connect the presentational components to Redux. For example, the presentational TodoList component needs a container like TodoList that subscribes to the Redux store and knows how to apply the current visibility filter.
+We will also need some container components to connect the presentational components to Redux. For example, the presentational `TodoList` component needs a container like `VisibleTodoList` that subscribes to the Redux store and knows how to apply the current visibility filter.
 
-* TodoList filters the todos according to the current visibility filter and renders a TodoList.
+* `VisibleTodoList` filters the todos according to the current visibility filter and renders a `TodoList`.
 
 ### Designing Other Components
 
@@ -89,7 +92,9 @@ import PropTypes from 'prop-types'
 const Todo = ({ onClick, completed, text }) => (
   <li
     onClick={onClick}
-    style={ {textDecoration: completed ? 'line-through' : 'none'}}
+    style={ { 
+      textDecoration: completed ? 'line-through' : 'none' 
+    } }
   >
     {text}
   </li>
@@ -111,13 +116,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Todo from './Todo'
 
-const TodoList = ({ todos, toggleTodo }) => (
+const TodoList = ({ todos, onTodoClick }) => (
   <ul>
     {todos.map(todo =>
       <Todo
         key={todo.id}
         {...todo} 
-        onClick={() => toggleTodo(todo.id)}
+        onClick={() => onTodoClick(todo.id)}
       />
     )}
   </ul>
@@ -129,7 +134,7 @@ TodoList.propTypes = {
     completed: PropTypes.bool.isRequired,
     text: PropTypes.string.isRequired
   }).isRequired).isRequired,
-  toggleTodo: PropTypes.func.isRequired
+  onTodoClick: PropTypes.func.isRequired
 }
 
 export default TodoList
@@ -161,12 +166,16 @@ const mapStateToProps = state => ({
 })
 ```
 
-In addition to reading the state, container components can dispatch actions. In a similar fashion, you can define a function called `mapDispatchToProps()` that receives the `dispatch()` method and returns callback props that you want to inject into the presentational component. For example, we want the `VisibleTodoList` to inject a prop called `toggleTodo` into the TodoList component, and we want `toggleTodo` to dispatch a TOGGLE_TODO action:
+In addition to reading the state, container components can dispatch actions. In a similar fashion, you can define a function called `mapDispatchToProps()` that receives the `dispatch()` method and returns callback props that you want to inject into the presentational component. For example, we want the `VisibleTodoList` to inject a prop called `onTodoClick` into the TodoList component, and we want `onTodoClick` to dispatch a TOGGLE_TODO action:
 
 ```
-const mapDispatchToProps = dispatch => ({
-  toggleTodo: id => dispatch(toggleTodo(id))
-})
+const mapDispatchToProps = dispatch => {
+  return {
+    onTodoClick: id => {
+      dispatch(toggleTodo(id))
+    }
+  }
+}
 ```
 
 Finally, we create the `VisibleTodoList` by calling connect() and passing these two functions:
@@ -184,7 +193,7 @@ These are the basics of the React Redux API, but there are a few shortcuts and p
 
 Find the rest of the container components defined below:
 
-`containers/TodoList.js`
+`containers/VisibleTodoList.js`
 
 ```
 import { connect } from 'react-redux'
@@ -205,9 +214,14 @@ const mapStateToProps = state => ({
   todos: getVisibleTodos(state.todos, state.visibilityFilter)
 })
 
-const mapDispatchToProps = dispatch => ({
-  toggleTodo: id => dispatch(toggleTodo(id))
-})
+const mapDispatchToProps = dispatch => {
+  return {
+    onTodoClick: id => {
+      dispatch(toggleTodo(id))
+    }
+  }
+}
+
 
 const VisibleTodoList = connect(
   mapStateToProps,

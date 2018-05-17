@@ -45,7 +45,7 @@
 
 
 
-  <meta property="article:published_time" content="2018-05-17T15:27:30+07:00">
+  <meta property="article:published_time" content="2018-05-17T21:33:16+07:00">
 
 
 
@@ -294,6 +294,14 @@
 
             <li><a href="/usage-with-redux" class="active">Usage with Redux</a></li>
           
+            
+            
+
+            
+            
+
+            <li><a href="/example-todo-list" class="">Example Todo List</a></li>
+          
         </ul>
         
       </li>
@@ -309,7 +317,7 @@
     <meta itemprop="headline" content="Usage with React">
     <meta itemprop="description" content="">
     
-    <meta itemprop="dateModified" content="May 18, 2018">
+    <meta itemprop="dateModified" content="May 17, 2018">
 
     <div class="page__inner-wrap">
       
@@ -425,11 +433,14 @@
   <li><code class="highlighter-rouge">TodoList</code> is a list showing visible todos.
     <ul>
       <li><code class="highlighter-rouge">todos: Array</code> is an array of todo items with <code class="highlighter-rouge">{ id, text }</code> shape.</li>
+      <li><code class="highlighter-rouge">onTodoClick(id: number)</code> is a callback to invoke when a todo is clicked.</li>
     </ul>
   </li>
   <li><code class="highlighter-rouge">Todo</code> is a single todo item.
     <ul>
       <li><code class="highlighter-rouge">text: string</code> is the text to show.</li>
+      <li><code class="highlighter-rouge">completed: boolean</code> is whether the todo should appear crossed out.</li>
+      <li><code class="highlighter-rouge">onClick()</code> is a callback to invoke when the todo is clicked.</li>
     </ul>
   </li>
   <li><code class="highlighter-rouge">App</code> is the root component that renders everything else.</li>
@@ -439,10 +450,10 @@
 
 <h3 id="designing-container-components">Designing Container Components</h3>
 
-<p>We will also need some container components to connect the presentational components to Redux. For example, the presentational TodoList component needs a container like TodoList that subscribes to the Redux store and knows how to apply the current visibility filter.</p>
+<p>We will also need some container components to connect the presentational components to Redux. For example, the presentational <code class="highlighter-rouge">TodoList</code> component needs a container like <code class="highlighter-rouge">VisibleTodoList</code> that subscribes to the Redux store and knows how to apply the current visibility filter.</p>
 
 <ul>
-  <li>TodoList filters the todos according to the current visibility filter and renders a TodoList.</li>
+  <li><code class="highlighter-rouge">VisibleTodoList</code> filters the todos according to the current visibility filter and renders a <code class="highlighter-rouge">TodoList</code>.</li>
 </ul>
 
 <h3 id="designing-other-components">Designing Other Components</h3>
@@ -471,7 +482,9 @@ import PropTypes from 'prop-types'
 const Todo = ({ onClick, completed, text }) =&gt; (
   &lt;li
     onClick={onClick}
-    style={ {textDecoration: completed ? 'line-through' : 'none'}}
+    style={ { 
+      textDecoration: completed ? 'line-through' : 'none' 
+    } }
   &gt;
     {text}
   &lt;/li&gt;
@@ -492,13 +505,13 @@ export default Todo
 import PropTypes from 'prop-types'
 import Todo from './Todo'
 
-const TodoList = ({ todos, toggleTodo }) =&gt; (
+const TodoList = ({ todos, onTodoClick }) =&gt; (
   &lt;ul&gt;
     {todos.map(todo =&gt;
       &lt;Todo
         key={todo.id}
         {...todo} 
-        onClick={() =&gt; toggleTodo(todo.id)}
+        onClick={() =&gt; onTodoClick(todo.id)}
       /&gt;
     )}
   &lt;/ul&gt;
@@ -510,7 +523,7 @@ TodoList.propTypes = {
     completed: PropTypes.bool.isRequired,
     text: PropTypes.string.isRequired
   }).isRequired).isRequired,
-  toggleTodo: PropTypes.func.isRequired
+  onTodoClick: PropTypes.func.isRequired
 }
 
 export default TodoList
@@ -541,11 +554,15 @@ const mapStateToProps = state =&gt; ({
 })
 </code></pre></div></div>
 
-<p>In addition to reading the state, container components can dispatch actions. In a similar fashion, you can define a function called <code class="highlighter-rouge">mapDispatchToProps()</code> that receives the <code class="highlighter-rouge">dispatch()</code> method and returns callback props that you want to inject into the presentational component. For example, we want the <code class="highlighter-rouge">VisibleTodoList</code> to inject a prop called <code class="highlighter-rouge">toggleTodo</code> into the TodoList component, and we want <code class="highlighter-rouge">toggleTodo</code> to dispatch a TOGGLE_TODO action:</p>
+<p>In addition to reading the state, container components can dispatch actions. In a similar fashion, you can define a function called <code class="highlighter-rouge">mapDispatchToProps()</code> that receives the <code class="highlighter-rouge">dispatch()</code> method and returns callback props that you want to inject into the presentational component. For example, we want the <code class="highlighter-rouge">VisibleTodoList</code> to inject a prop called <code class="highlighter-rouge">onTodoClick</code> into the TodoList component, and we want <code class="highlighter-rouge">onTodoClick</code> to dispatch a TOGGLE_TODO action:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const mapDispatchToProps = dispatch =&gt; ({
-  toggleTodo: id =&gt; dispatch(toggleTodo(id))
-})
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const mapDispatchToProps = dispatch =&gt; {
+  return {
+    onTodoClick: id =&gt; {
+      dispatch(toggleTodo(id))
+    }
+  }
+}
 </code></pre></div></div>
 
 <p>Finally, we create the <code class="highlighter-rouge">VisibleTodoList</code> by calling connect() and passing these two functions:</p>
@@ -562,7 +579,7 @@ export default VisibleTodoList
 
 <p>Find the rest of the container components defined below:</p>
 
-<p><code class="highlighter-rouge">containers/TodoList.js</code></p>
+<p><code class="highlighter-rouge">containers/VisibleTodoList.js</code></p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import { connect } from 'react-redux'
 import { toggleTodo } from '../actions'
@@ -582,9 +599,14 @@ const mapStateToProps = state =&gt; ({
   todos: getVisibleTodos(state.todos, state.visibilityFilter)
 })
 
-const mapDispatchToProps = dispatch =&gt; ({
-  toggleTodo: id =&gt; dispatch(toggleTodo(id))
-})
+const mapDispatchToProps = dispatch =&gt; {
+  return {
+    onTodoClick: id =&gt; {
+      dispatch(toggleTodo(id))
+    }
+  }
+}
+
 
 const VisibleTodoList = connect(
   mapStateToProps,
@@ -684,7 +706,7 @@ render(
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-18">May 18, 2018</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-17">May 17, 2018</time></p>
         
       </footer>
 
@@ -697,7 +719,8 @@ render(
 ">Previous</a>
     
     
-      <a href="#" class="pagination--pager disabled">Next</a>
+      <a href="/example-todo-list" class="pagination--pager" title="Example Todo List
+">Next</a>
     
   </nav>
 
