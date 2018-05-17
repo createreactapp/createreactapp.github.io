@@ -53,4 +53,14 @@ var store = [{
         "excerpt":"This is the complete source code of the tiny todo app we built during the basics tutorial. Entry Point index.js import React from 'react'import { render } from 'react-dom'import { createStore } from 'redux'import { Provider } from 'react-redux'import App from './components/App'import rootReducer from './reducers'const store = createStore(rootReducer)render( &lt;Provider store={store}&gt;...","categories": [],
         "tags": [],
         "url": "/example-todo-list",
+        "teaser":null},{
+        "title": "Installation",
+        "excerpt":"Create React App doesn’t prescribe a specific routing solution, but React Router is the most popular one. Open up your terminal and run: npm install --save react-router-domTo try it, delete all the code in src/App.js and replace it with any of the examples on its website. The Basic Example is...","categories": [],
+        "tags": [],
+        "url": "/install-router",
+        "teaser":null},{
+        "title": "Adding a Router",
+        "excerpt":"We will use React to build a very simple app. Installing Crate React APP To get React projects up and running quickly with Create React App, get a look the previous chapter. Installing React Redux Open up your terminal and run: npm install --save react-router-domNow, we will add routes to...","categories": [],
+        "tags": [],
+        "url": "/add-a-router",
         "teaser":null},]

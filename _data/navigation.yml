@@ -12,6 +12,12 @@ docs:
         url: /create-react-app-structure
       - title: "Create React App Development Server"
         url: /starting-the-create-react-app-development-server
+  - title: Router
+    children:
+      - title: "Installation"
+        url: /install-router
+      - title: "Adding a Router"
+        url: /add-a-router
   - title: Redux
     children:
       - title: "What is Redux?"

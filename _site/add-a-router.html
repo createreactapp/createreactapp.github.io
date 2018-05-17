@@ -9,19 +9,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Installation - Create React App</title>
-<meta name="description" content="It is possible to manually create a React app, but Facebook has created a node module create-react-app to generate a boilerplate version of a React application.">
+<!-- begin _includes/seo.html --><title>Adding a Router - Create React App</title>
+<meta name="description" content="Learn Create React App">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Create React App">
-<meta property="og:title" content="Installation">
-<meta property="og:url" content="/install-create-react-app">
+<meta property="og:title" content="Adding a Router">
+<meta property="og:url" content="/add-a-router">
 
 
-  <meta property="og:description" content="It is possible to manually create a React app, but Facebook has created a node module create-react-app to generate a boilerplate version of a React application.">
+  <meta property="og:description" content="Learn Create React App">
 
 
 
@@ -30,9 +30,9 @@
 
 
   <meta name="twitter:site" content="@BunlongVan">
-  <meta name="twitter:title" content="Installation">
-  <meta name="twitter:description" content="It is possible to manually create a React app, but Facebook has created a node module create-react-app to generate a boilerplate version of a React application.">
-  <meta name="twitter:url" content="/install-create-react-app">
+  <meta name="twitter:title" content="Adding a Router">
+  <meta name="twitter:description" content="Learn Create React App">
+  <meta name="twitter:url" content="/add-a-router">
 
   
     <meta name="twitter:card" content="summary">
@@ -49,7 +49,7 @@
 
 
 
-  <meta property="article:modified_time" content="2018-05-15T02:58:49+07:00">
+  <meta property="article:modified_time" content="2018-05-18T02:58:49+07:00">
 
 
 
@@ -58,7 +58,7 @@
   
 
 
-<link rel="canonical" href="/install-create-react-app">
+<link rel="canonical" href="/add-a-router">
 
 
 
@@ -216,7 +216,7 @@
             
             
 
-            <li><a href="/install-create-react-app" class="active">Installation</a></li>
+            <li><a href="/install-create-react-app" class="">Installation</a></li>
           
             
             
@@ -260,7 +260,7 @@
             
             
 
-            <li><a href="/add-a-router" class="">Adding a Router</a></li>
+            <li><a href="/add-a-router" class="active">Adding a Router</a></li>
           
         </ul>
         
@@ -342,15 +342,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Installation">
-    <meta itemprop="description" content="It is possible to manually create a React app, but Facebook has created a node module create-react-app to generate a boilerplate version of a React application.">
+    <meta itemprop="headline" content="Adding a Router">
+    <meta itemprop="description" content="">
     
-    <meta itemprop="dateModified" content="May 14, 2018">
+    <meta itemprop="dateModified" content="May 17, 2018">
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Installation
+          <h1 id="page-title" class="page__title" itemprop="headline">Adding a Router
 </h1>
           
         </header>
@@ -358,25 +358,86 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>It is possible to manually create a React app, but Facebook has created a node module <code class="highlighter-rouge">create-react-app</code> to generate a boilerplate version of a React application.</p>
+        <p>We will use React to build a very simple app.</p>
 
-<p>Besides providing something that works out-of-the-box, this has the added benefit of providing a consistent structure for React apps that you will recognize as you move between React projects. It also provides an out-of-the-box build script and development server.</p>
+<h2 id="installing-crate-react-app">Installing Crate React APP</h2>
 
-<p>We will use npm to install the <code class="highlighter-rouge">create-react-app</code> command line interface (CLI) globally (-g).</p>
+<p>To get React projects up and running quickly with Create React App, get a look the <a href="/install-create-react-app">previous chapter</a>.</p>
+
+<h2 id="installing-react-redux">Installing React Redux</h2>
 
 <p>Open up your terminal and run:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install -g create-react-app
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install --save react-router-dom
 </code></pre></div></div>
 
-<p>Now that you have the CLI available for use, navigate to the parent directory that you would like to place the application within. Then, run <code class="highlighter-rouge">create-react-app</code> with the name you would like to use for your project (just no capital letters ):</p>
+<p>Now, we will add routes to the app. Instead of rendering App element. Add more files in <code class="highlighter-rouge">src</code> folder and named as <code class="highlighter-rouge">Home.js</code> and <code class="highlighter-rouge">Login.js</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>create-react-app &lt;name-of-app&gt;
+<p>‘App.js’</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Home from './Home';
+import Login from './Login';
+
+class App extends Component {
+  render() {
+    return (
+      &lt;Router&gt;
+        &lt;div&gt;
+           &lt;h2&gt;Welcome to React Router&lt;/h2&gt;
+           &lt;ul&gt;
+              &lt;li&gt;&lt;Link to={'/'}&gt;Home&lt;/Link&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;Link to={'/Login'}&gt;Login&lt;/Link&gt;&lt;/li&gt;
+           &lt;/ul&gt;
+           &lt;hr /&gt;
+           
+           &lt;Switch&gt;
+              &lt;Route exact path='/' component={Home} /&gt;
+              &lt;Route exact path='/Login' component={Login} /&gt;
+           &lt;/Switch&gt;
+        &lt;/div&gt;
+     &lt;/Router&gt;
+    );
+  }
+}
+
+export default App;
 </code></pre></div></div>
 
-<p>Upon completion, you will get some quick tips on how to use the application:</p>
+<p><code class="highlighter-rouge">Home.js</code></p>
 
-<p><img src="/assets/images/install-create-react-app.png" alt="Install Create React App" /></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React, { Component } from 'react';
+
+class Home extends Component {
+   render() {
+      return (
+         &lt;div&gt;
+            &lt;h2&gt;Home&lt;/h2&gt;
+         &lt;/div&gt;
+      );
+   }
+}
+
+export default Home;
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">Login.js</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React, { Component } from 'react';
+
+class Login extends Component {
+   render() {
+      return (
+         &lt;div&gt;
+            &lt;h2&gt;Login&lt;/h2&gt;
+         &lt;/div&gt;
+      );
+   }
+}
+
+export default Login;
+</code></pre></div></div>
 
         
       </section>
@@ -387,7 +448,7 @@
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-14">May 14, 2018</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-17">May 17, 2018</time></p>
         
       </footer>
 
@@ -396,12 +457,11 @@
       
   <nav class="pagination">
     
-      <a href="/" class="pagination--pager" title="What is Create React App?
+      <a href="/install-router" class="pagination--pager" title="Installation
 ">Previous</a>
     
     
-      <a href="/create-react-app-structure" class="pagination--pager" title="Structure
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
