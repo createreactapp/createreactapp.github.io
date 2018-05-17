@@ -8,7 +8,7 @@ toc: true
 
 Now that you're familiar with the principles of Redux, let’s dive deeper.
 
-We're going to look at the technical implementation of those principles. Once you've got a basic of the concepts below, you'll be ready to move on to some code in next chepter.
+We're going to look at the technical implementation of those principles. Once you've got a basic of the concepts below, you'll be ready to move on to some code in next chapter.
 
 The store holds the application state and gives access to some useful methods.
 
@@ -49,7 +49,7 @@ They take in the current state and an action, and return a new state.
 
 Unlike Flux, Redux has a single store. Your entire applications state is in one object. That means using a single reducer function is not practical. We'd end up with a 1000 lines file that nobody would want to read.
 
-Redux gives us the ability to split these reducers into separate files. We aren't going to dive into reducer composition in this chepter. We'll cover that in upcoming chepter.
+Redux gives us the ability to split these reducers into separate files. We aren't going to dive into reducer composition in this chapter. We'll cover that in upcoming chapter.
 
 ## Store
 

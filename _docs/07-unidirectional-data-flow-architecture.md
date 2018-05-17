@@ -26,6 +26,6 @@ This means that the central state cannot trigger any further actions. Only a use
 **Note:** We'll be talking more about async operations and action dispatchers later. For now, let’s assume that only user actions can dispatch actions.
 {: .notice--warning}
 
-Don't worry if you didn’t understand that in the first go. We’ll dive into these concepts further through this chepter.
+Don't worry if you didn’t understand that in the first go. We’ll dive into these concepts further through this chapter.
 
 All you need to remember is that a central source of truth (state) makes everything easier.

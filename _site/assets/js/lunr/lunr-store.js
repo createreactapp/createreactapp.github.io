@@ -40,7 +40,7 @@ var store = [{
         "url": "/principles-of-redux",
         "teaser":null},{
         "title": "Pillars of Redux",
-        "excerpt":"Now that you’re familiar with the principles of Redux, let’s dive deeper. We’re going to look at the technical implementation of those principles. Once you’ve got a basic of the concepts below, you’ll be ready to move on to some code in next chepter. The store holds the application state...","categories": [],
+        "excerpt":"Now that you’re familiar with the principles of Redux, let’s dive deeper. We’re going to look at the technical implementation of those principles. Once you’ve got a basic of the concepts below, you’ll be ready to move on to some code in next chapter. The store holds the application state...","categories": [],
         "tags": [],
         "url": "/pillars-of-redux",
         "teaser":null},{
