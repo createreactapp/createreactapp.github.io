@@ -18,6 +18,10 @@ docs:
         url: /install-router
       - title: "Adding a Router"
         url: /add-a-router
+  - title: Stylesheet
+    children:
+      - title: "Adding a Stylesheet"
+        url: /add-a-stylesheet
   - title: Redux
     children:
       - title: "What is Redux?"
