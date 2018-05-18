@@ -18,6 +18,8 @@ docs:
         url: /install-router
       - title: "Adding a Router"
         url: /add-a-router
+      - title: "React Router v4 with Multiple Layouts"
+        url: /react-router-v4-with-multiple-layout
   - title: Stylesheet
     children:
       - title: "Adding a Stylesheet"

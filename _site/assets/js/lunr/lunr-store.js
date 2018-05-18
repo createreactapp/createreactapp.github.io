@@ -60,7 +60,7 @@ var store = [{
         "url": "/install-router",
         "teaser":null},{
         "title": "Adding a Router",
-        "excerpt":"We will use React to build a very simple app. Installing Crate React APP To get React projects up and running quickly with Create React App, get a look the previous chapter. Installing React Redux Open up your terminal and run: npm install --save react-router-domNow, we will add routes to...","categories": [],
+        "excerpt":"We will use React to build a very simple app. Installing Crate React APP To get React projects up and running quickly with Create React App, get a look the previous chapter. Installing React Router Open up your terminal and run: npm install --save react-router-domNow, we will add routes to...","categories": [],
         "tags": [],
         "url": "/add-a-router",
         "teaser":null},{
@@ -123,4 +123,9 @@ var store = [{
         "excerpt":"When you include a script in the HTML file that defines global variables and try to use one of these variables in the code, the linter will complain because it cannot see the definition of the variable. You can avoid this by reading the global variable explicitly from the window...","categories": [],
         "tags": [],
         "url": "/use-global-variables",
+        "teaser":null},{
+        "title": "React Router v4 with Multiple Layouts",
+        "excerpt":"We will use React to build a very simple app with two layouts, login layout and app layout. Installing Crate React APP To get React projects up and running quickly with Create React App, get a look the previous chapter. Installing React Router Dom Open up your terminal and run:...","categories": [],
+        "tags": [],
+        "url": "/react-router-v4-with-multiple-layout",
         "teaser":null},]

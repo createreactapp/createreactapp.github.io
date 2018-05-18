@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Using HTTPS in Development - Create React App</title>
+<!-- begin _includes/seo.html --><title>React Router v4 with Multiple Layouts - Create React App</title>
 <meta name="description" content="Learn Create React App">
 
 
@@ -17,8 +17,8 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Create React App">
-<meta property="og:title" content="Using HTTPS in Development">
-<meta property="og:url" content="/use-https-in-development">
+<meta property="og:title" content="React Router v4 with Multiple Layouts">
+<meta property="og:url" content="/react-router-v4-with-multiple-layout">
 
 
   <meta property="og:description" content="Learn Create React App">
@@ -30,9 +30,9 @@
 
 
   <meta name="twitter:site" content="@BunlongVan">
-  <meta name="twitter:title" content="Using HTTPS in Development">
+  <meta name="twitter:title" content="React Router v4 with Multiple Layouts">
   <meta name="twitter:description" content="Learn Create React App">
-  <meta name="twitter:url" content="/use-https-in-development">
+  <meta name="twitter:url" content="/react-router-v4-with-multiple-layout">
 
   
     <meta name="twitter:card" content="summary">
@@ -58,7 +58,7 @@
   
 
 
-<link rel="canonical" href="/use-https-in-development">
+<link rel="canonical" href="/react-router-v4-with-multiple-layout">
 
 
 
@@ -268,7 +268,7 @@
             
             
 
-            <li><a href="/react-router-v4-with-multiple-layout" class="">React Router v4 with Multiple Layouts</a></li>
+            <li><a href="/react-router-v4-with-multiple-layout" class="active">React Router v4 with Multiple Layouts</a></li>
           
         </ul>
         
@@ -356,7 +356,7 @@
             
             
 
-            <li><a href="/use-https-in-development" class="active">Using HTTPS in Development</a></li>
+            <li><a href="/use-https-in-development" class="">Using HTTPS in Development</a></li>
           
         </ul>
         
@@ -482,7 +482,7 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Using HTTPS in Development">
+    <meta itemprop="headline" content="React Router v4 with Multiple Layouts">
     <meta itemprop="description" content="">
     
     <meta itemprop="dateModified" content="May 19, 2018">
@@ -490,7 +490,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Using HTTPS in Development
+          <h1 id="page-title" class="page__title" itemprop="headline">React Router v4 with Multiple Layouts
 </h1>
           
         </header>
@@ -498,29 +498,161 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>You may require the dev server to serve pages over HTTPS. One particular case where this could be useful is when using <a href="/proxying-api-request">the “proxy” feature</a> to proxy requests to an API server when that API server is itself serving HTTPS.</p>
+        <p>We will use React to build a very simple app with two layouts, <code class="highlighter-rouge">login</code> layout and <code class="highlighter-rouge">app</code> layout.</p>
 
-<p>To do this, set the <code class="highlighter-rouge">HTTPS</code> environment variable to <code class="highlighter-rouge">true</code>, then start the dev server as usual with <code class="highlighter-rouge">npm start</code>:</p>
+<h2 id="installing-crate-react-app">Installing Crate React APP</h2>
 
-<p><code class="highlighter-rouge">Linux, macOS (Bash)</code></p>
+<p>To get React projects up and running quickly with Create React App, get a look the <a href="/install-create-react-app">previous chapter</a>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTPS=true npm start
+<h2 id="installing-react-router-dom">Installing React Router Dom</h2>
+
+<p>Open up your terminal and run:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install --save react-router-dom
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">Windows (cmd.exe)</code></p>
+<h2 id="creating-the-layout">Creating the Layout</h2>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set HTTPS=true&amp;&amp;npm start
+<p>React router offers a render prop which will be called when the route matches:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Using the render prop allows a more manual setup
+&lt;Route path="/" render={matchProps =&gt; &lt;SomeComponent {...matchProps} /&gt;} /&gt;
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">Windows (Powershell)</code></p>
+<p>This is useful because we can wrap a component around the <code class="highlighter-rouge">&lt;Route /&gt;</code> and control where our component is rendered whilst allowing all the usual props to be <code class="highlighter-rouge">Route</code> get passed through:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>($env:HTTPS = $true) -and (npm start)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Login layout
+
+const LoginLayout = ({ children }) =&gt; (                       
+  &lt;div&gt;
+    &lt;p&gt;Login Layout&lt;/p&gt;
+    {children}                                     
+  &lt;/div&gt;
+);  
+
+const LoginLayoutRoute = ({component: Component, ...rest}) =&gt; {
+  return (
+    &lt;Route {...rest} render={matchProps =&gt; (
+      &lt;LoginLayout&gt;
+        &lt;Component {...matchProps} /&gt;
+      &lt;/LoginLayout&gt;
+    )} /&gt;
+  )
+};
+
+// App layout
+
+const AppLayout = ({ children }) =&gt; (                       
+  &lt;div&gt;
+    &lt;p&gt;App Layout&lt;/p&gt;
+    {children}                                          
+  &lt;/div&gt;           
+);
+
+const AppLayoutRoute = ({component: Component, ...rest}) =&gt; {
+  return (
+    &lt;Route {...rest} render={matchProps =&gt; (
+      &lt;AppLayout&gt;
+        &lt;Component {...matchProps} /&gt;
+      &lt;/AppLayout&gt;
+    )} /&gt;
+  )
+};
 </code></pre></div></div>
 
-<p>(Note: the lack of whitespace is intentional.)</p>
+<p>The <code class="highlighter-rouge">rest</code> parameter will contain every prop passed to <code class="highlighter-rouge">LoginLayoutRoute</code> except component so it allows us to <code class="highlighter-rouge">forward</code> them on to the underlying Route component as usual.</p>
 
-<p>Note that the server will use a self-signed certificate, so your web browser will almost definitely display a warning upon accessing the page.</p>
+<p>Providing a <code class="highlighter-rouge">render</code> prop to the <code class="highlighter-rouge">Route</code> we can control where the <code class="highlighter-rouge">component</code> prop is rendered. In this case we wrap it in <code class="highlighter-rouge">AppLayout</code> component as a children. The <code class="highlighter-rouge">matchProps</code> are what usually get passed to a component rendered by <code class="highlighter-rouge">Route</code>.</p>
 
+<h2 id="implementing-the-layout">Implementing the Layout</h2>
+
+<p>Now, we will add routes to the app. Instead of rendering App element.</p>
+
+<p><code class="highlighter-rouge">App.js</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React from 'react';
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+
+// Login layout
+
+const LoginLayout = ({ children }) =&gt; (                       
+  &lt;div&gt;
+    &lt;p&gt;Login Layout&lt;/p&gt;
+    {children}                                     
+  &lt;/div&gt;
+);  
+
+const LoginLayoutRoute = ({component: Component, ...rest}) =&gt; {
+  return (
+    &lt;Route {...rest} render={matchProps =&gt; (
+      &lt;LoginLayout&gt;
+        &lt;Component {...matchProps} /&gt;
+      &lt;/LoginLayout&gt;
+    )} /&gt;
+  )
+};
+
+// App layout
+
+const AppLayout = ({ children }) =&gt; (                       
+  &lt;div&gt;
+    &lt;p&gt;App Layout&lt;/p&gt;
+    {children}                                          
+  &lt;/div&gt;           
+);
+
+const AppLayoutRoute = ({component: Component, ...rest}) =&gt; {
+  return (
+    &lt;Route {...rest} render={matchProps =&gt; (
+      &lt;AppLayout&gt;
+        &lt;Component {...matchProps} /&gt;
+      &lt;/AppLayout&gt;
+    )} /&gt;
+  )
+};
+
+// Pages
+
+const LoginPage = ({  classes }) =&gt; {
+  return (
+    &lt;div&gt;
+      Login Page
+    &lt;/div&gt;
+  );
+};
+
+const HomePage = ({  classes }) =&gt; {
+  return (
+    &lt;div&gt;
+      Home Page
+    &lt;/div&gt;
+  );
+};
+
+const UserPage = ({  classes }) =&gt; {
+  return (
+    &lt;div&gt;
+      User Page
+    &lt;/div&gt;
+  );
+};
+
+export default (
+  &lt;BrowserRouter&gt;
+    &lt;Switch&gt;
+      &lt;Route exact path="/"&gt;
+        &lt;Redirect to="/signin" /&gt;
+      &lt;/Route&gt;
+
+      &lt;LoginLayoutRoute path="/signin" component={LoginPage} /&gt;
+      
+      &lt;AppLayoutRoute path="/homes" component={HomePage} /&gt;
+
+      &lt;AppLayoutRoute path="/users" component={UserPage} /&gt;
+    &lt;/Switch&gt;
+  &lt;/BrowserRouter&gt;
+);
+</code></pre></div></div>
 
         
       </section>
@@ -540,12 +672,11 @@
       
   <nav class="pagination">
     
-      <a href="/proxying-api-request" class="pagination--pager" title="Proxying API Requests in Development
+      <a href="/use-global-variables" class="pagination--pager" title="Using Global Variables
 ">Previous</a>
     
     
-      <a href="/add-material-ui" class="pagination--pager" title="Adding Material UI
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 

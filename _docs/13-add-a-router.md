@@ -11,7 +11,7 @@ We will use React to build a very simple app.
 
 To get React projects up and running quickly with Create React App, get a look the [previous chapter](/install-create-react-app).
 
-## Installing React Redux
+## Installing React Router
 
 Open up your terminal and run:
 
@@ -21,7 +21,7 @@ npm install --save react-router-dom
 
 Now, we will add routes to the app. Instead of rendering App element. Add more files in `src` folder and named as `Home.js` and `Login.js`.
 
-'App.js'
+`App.js`
 
 ```
 import React, { Component } from 'react';
