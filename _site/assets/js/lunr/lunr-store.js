@@ -73,4 +73,9 @@ var store = [{
         "excerpt":"You don’t have to use React Bootstrap together with React but it is a popular library for integrating Bootstrap with React apps. If you need it, you can integrate it with Create React App by following these steps: Install React Bootstrap and Bootstrap from npm. React Bootstrap does not include...","categories": [],
         "tags": [],
         "url": "/add-bootstrap",
+        "teaser":null},{
+        "title": "Adding a CSS Preprocessor (Sass, Less etc.)",
+        "excerpt":"Following this rule often makes CSS preprocessors less useful, as features like mixins and nesting are replaced by component composition. You can, however, integrate a CSS preprocessor if you find it valuable. In this walkthrough, we will be using Sass, but you can also use Less, or another alternative. First,...","categories": [],
+        "tags": [],
+        "url": "/add-a-css-preprocessor",
         "teaser":null},]

@@ -24,6 +24,8 @@ docs:
         url: /add-a-stylesheet
       - title: "Adding Bootstrap"
         url: /add-bootstrap
+      - title: "Adding a CSS Preprocessor"
+        url: /add-a-css-preprocessor
   - title: Redux
     children:
       - title: "What is Redux?"

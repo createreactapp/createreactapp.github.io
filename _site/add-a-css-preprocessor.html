@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Adding a Stylesheet - Create React App</title>
+<!-- begin _includes/seo.html --><title>Adding a CSS Preprocessor (Sass, Less etc.) - Create React App</title>
 <meta name="description" content="Learn Create React App">
 
 
@@ -17,8 +17,8 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Create React App">
-<meta property="og:title" content="Adding a Stylesheet">
-<meta property="og:url" content="/add-a-stylesheet">
+<meta property="og:title" content="Adding a CSS Preprocessor (Sass, Less etc.)">
+<meta property="og:url" content="/add-a-css-preprocessor">
 
 
   <meta property="og:description" content="Learn Create React App">
@@ -30,9 +30,9 @@
 
 
   <meta name="twitter:site" content="@BunlongVan">
-  <meta name="twitter:title" content="Adding a Stylesheet">
+  <meta name="twitter:title" content="Adding a CSS Preprocessor (Sass, Less etc.)">
   <meta name="twitter:description" content="Learn Create React App">
-  <meta name="twitter:url" content="/add-a-stylesheet">
+  <meta name="twitter:url" content="/add-a-css-preprocessor">
 
   
     <meta name="twitter:card" content="summary">
@@ -58,7 +58,7 @@
   
 
 
-<link rel="canonical" href="/add-a-stylesheet">
+<link rel="canonical" href="/add-a-css-preprocessor">
 
 
 
@@ -280,7 +280,7 @@
             
             
 
-            <li><a href="/add-a-stylesheet" class="active">Adding a Stylesheet</a></li>
+            <li><a href="/add-a-stylesheet" class="">Adding a Stylesheet</a></li>
           
             
             
@@ -296,7 +296,7 @@
             
             
 
-            <li><a href="/add-a-css-preprocessor" class="">Adding a CSS Preprocessor</a></li>
+            <li><a href="/add-a-css-preprocessor" class="active">Adding a CSS Preprocessor</a></li>
           
         </ul>
         
@@ -378,7 +378,7 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Adding a Stylesheet">
+    <meta itemprop="headline" content="Adding a CSS Preprocessor (Sass, Less etc.)">
     <meta itemprop="description" content="">
     
     <meta itemprop="dateModified" content="May 18, 2018">
@@ -386,7 +386,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Adding a Stylesheet
+          <h1 id="page-title" class="page__title" itemprop="headline">Adding a CSS Preprocessor (Sass, Less etc.)
 </h1>
           
         </header>
@@ -394,33 +394,77 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>This project setup uses <a href="https://webpack.js.org">Webpack</a> for handling all assets. Webpack offers a custom way of “extending” the concept of import beyond JavaScript. To express that a JavaScript file depends on a CSS file, you need to import the CSS from the JavaScript file:</p>
+        <p>Following this rule often makes CSS preprocessors less useful, as features like mixins and nesting are replaced by component composition. You can, however, integrate a CSS preprocessor if you find it valuable. In this walkthrough, we will be using Sass, but you can also use Less, or another alternative.</p>
 
-<p><code class="highlighter-rouge">Button.css</code></p>
+<p>First, let’s install the command-line interface for Sass:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.Button {
-  padding: 20px;
-}
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install --save node-sass-chokidar
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">Button.js</code></p>
+<p>Then in <code class="highlighter-rouge">package.json</code>, add the following lines to scripts:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React, { Component } from 'react';
-import './Button.css'; // Tell Webpack that Button.js uses these styles
-
-class Button extends Component {
-  render() {
-    // You can use them as regular CSS styles
-    return &lt;div className="Button" /&gt;;
-  }
-}
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> "scripts": {
++   "build-css": "node-sass-chokidar src/ -o src/",
++   "watch-css": "npm run build-css &amp;&amp; node-sass-chokidar src/ -o src/ --watch --recursive",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
 </code></pre></div></div>
 
-<p>This is not required for React but many people find this feature convenient. You can read about the benefits of this approach. However you should be aware that this makes your code less portable to other build tools and environments than Webpack.</p>
+<p class="notice--warning"><strong>Note:</strong> To use a different preprocessor, replace build-css and watch-css commands according to your preprocessor’s documentation.</p>
 
-<p>In development, expressing dependencies this way allows your styles to be reloaded on the fly as you edit them. In production, all CSS files will be concatenated into a single minified <code class="highlighter-rouge">.css</code> file in the build output.</p>
+<p>Now you can rename <code class="highlighter-rouge">src/App.css</code> to <code class="highlighter-rouge">src/App.scss</code> and run <code class="highlighter-rouge">npm run watch-css</code>. The watcher will find every Sass file in <code class="highlighter-rouge">src</code> subdirectories, and create a corresponding CSS file next to it, in our case overwriting <code class="highlighter-rouge">src/App.css</code>. Since <code class="highlighter-rouge">src/App.js</code> still imports <code class="highlighter-rouge">src/App.css</code>, the styles become a part of your application. You can now edit <code class="highlighter-rouge">src/App.scss</code>, and <code class="highlighter-rouge">src/App.css</code> will be regenerated.</p>
 
-<p>If you are concerned about using Webpack-specific semantics, you can put all your CSS right into <code class="highlighter-rouge">src/index.css</code>. It would still be imported from <code class="highlighter-rouge">src/index.js</code>, but you could always remove that import if you later migrate to a different build tool.</p>
+<p>To share variables between Sass files, you can use Sass imports. For example, <code class="highlighter-rouge">src/App.scss</code> and other component style files could include <code class="highlighter-rouge">@import "./shared.scss";</code> with variable definitions.</p>
+
+<p>To enable importing files without using relative paths, you can add the <code class="highlighter-rouge">--include-path</code> option to the command in <code class="highlighter-rouge">package.json</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+"watch-css": "npm run build-css &amp;&amp; node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+</code></pre></div></div>
+
+<p>This will allow you to do imports like:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@import 'styles/_colors.scss'; // assuming a styles directory under src/
+@import 'nprogress/nprogress'; // importing a css file from the nprogress node module
+</code></pre></div></div>
+
+<p>At this point you might want to remove all CSS files from the source control, and add <code class="highlighter-rouge">src/**/*.css</code> to your <code class="highlighter-rouge">.gitignore</code> file. It is generally a good practice to keep the build products outside of the source control.</p>
+
+<p>As a final step, you may find it convenient to run <code class="highlighter-rouge">watch-css</code> automatically with <code class="highlighter-rouge">npm start</code>, and run <code class="highlighter-rouge">build-css</code> as a part of npm run build. You can use the <code class="highlighter-rouge">&amp;&amp;</code> operator to execute two scripts sequentially. However, there is no cross-platform way to run two scripts in parallel, so we will install a package for this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install --save npm-run-all
+</code></pre></div></div>
+
+<p>Then we can change <code class="highlighter-rouge">start</code> and <code class="highlighter-rouge">build</code> scripts to include the CSS preprocessor commands:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> "scripts": {
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css &amp;&amp; node-sass-chokidar src/ -o src/ --watch --recursive",
+-   "start": "react-scripts start",
+-   "build": "react-scripts build",
++   "start-js": "react-scripts start",
++   "start": "npm-run-all -p watch-css start-js",
++   "build-js": "react-scripts build",
++   "build": "npm-run-all build-css build-js",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+   }
+</code></pre></div></div>
+
+<p>Now running <code class="highlighter-rouge">npm start</code> and <code class="highlighter-rouge">npm run build</code> also builds Sass files.</p>
+
+<p><strong><em>Why node-sass-chokidar?</em></strong></p>
+
+<p><code class="highlighter-rouge">node-sass</code> has been reported as having the following issues:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">node-sass --watch</code> has been reported to have performance issues in certain conditions when used in a virtual machine or with docker.</li>
+  <li>Infinite styles compiling <a href="https://github.com/facebook/create-react-app/issues/1939">1939</a></li>
+  <li><code class="highlighter-rouge">node-sass</code> has been reported as having issues with detecting new files in a directory <a href="https://github.com/sass/node-sass/issues/1891">1891</a></li>
+</ul>
+
+<p><code class="highlighter-rouge">node-sass-chokidar</code> is used here as it addresses these issues.</p>
 
         
       </section>
@@ -440,12 +484,11 @@ class Button extends Component {
       
   <nav class="pagination">
     
-      <a href="/add-a-router" class="pagination--pager" title="Adding a Router
+      <a href="/add-bootstrap" class="pagination--pager" title="Adding Bootstrap
 ">Previous</a>
     
     
-      <a href="/add-bootstrap" class="pagination--pager" title="Adding Bootstrap
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
