@@ -5,7 +5,7 @@ excerpt: ""
 last_modified_at: 2018-05-18T15:58:49-04:00
 ---
 
-Similarly to the previous section, you can leave some placeholders in the HTML that inject global variables, for example:
+Similarly to the [next section](/use-global-variables), you can leave some placeholders in the HTML that inject global variables, for example:
 
 ```
 <!doctype html>

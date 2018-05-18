@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Fetching Data with AJAX Requests - Create React App</title>
+<!-- begin _includes/seo.html --><title>Using Global Variables - Create React App</title>
 <meta name="description" content="Learn Create React App">
 
 
@@ -17,8 +17,8 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Create React App">
-<meta property="og:title" content="Fetching Data with AJAX Requests">
-<meta property="og:url" content="/fetch-data-with-ajax-request">
+<meta property="og:title" content="Using Global Variables">
+<meta property="og:url" content="/use-global-variables">
 
 
   <meta property="og:description" content="Learn Create React App">
@@ -30,9 +30,9 @@
 
 
   <meta name="twitter:site" content="@BunlongVan">
-  <meta name="twitter:title" content="Fetching Data with AJAX Requests">
+  <meta name="twitter:title" content="Using Global Variables">
   <meta name="twitter:description" content="Learn Create React App">
-  <meta name="twitter:url" content="/fetch-data-with-ajax-request">
+  <meta name="twitter:url" content="/use-global-variables">
 
   
     <meta name="twitter:card" content="summary">
@@ -58,7 +58,7 @@
   
 
 
-<link rel="canonical" href="/fetch-data-with-ajax-request">
+<link rel="canonical" href="/use-global-variables">
 
 
 
@@ -324,7 +324,7 @@
             
             
 
-            <li><a href="/fetch-data-with-ajax-request" class="active">AJAX Requests</a></li>
+            <li><a href="/fetch-data-with-ajax-request" class="">AJAX Requests</a></li>
           
             
             
@@ -460,7 +460,7 @@
             
             
 
-            <li><a href="/use-global-variables" class="">Using Global Variables</a></li>
+            <li><a href="/use-global-variables" class="active">Using Global Variables</a></li>
           
         </ul>
         
@@ -474,7 +474,7 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Fetching Data with AJAX Requests">
+    <meta itemprop="headline" content="Using Global Variables">
     <meta itemprop="description" content="">
     
     <meta itemprop="dateModified" content="May 19, 2018">
@@ -482,7 +482,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Fetching Data with AJAX Requests
+          <h1 id="page-title" class="page__title" itemprop="headline">Using Global Variables
 </h1>
           
         </header>
@@ -490,13 +490,16 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>React doesn’t prescribe a specific approach to data fetching, but people commonly use either a library like <a href="https://github.com/axios/axios">axios</a> or the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">fetch() API</a> provided by the browser. Conveniently, Create React App includes a polyfill for <code class="highlighter-rouge">fetch()</code> so you can use it without worrying about the browser support.</p>
+        <p>When you include a script in the HTML file that defines global variables and try to use one of these variables in the code, the linter will complain because it cannot see the definition of the variable.</p>
 
-<p>The global <code class="highlighter-rouge">fetch</code> function allows to easily makes AJAX requests. It takes in a URL as an input and returns a Promise that resolves to a Response object. You can find more information about <code class="highlighter-rouge">fetch</code> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">here</a>.</p>
+<p>You can avoid this by reading the global variable explicitly from the <code class="highlighter-rouge">window</code> object, for example:</p>
 
-<p>This project also includes a <a href="https://github.com/then/promise">Promise polyfill</a> which provides a full implementation of Promises/A+. A Promise represents the eventual result of an asynchronous operation, you can find more information about Promises <a href="https://www.promisejs.org">here</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">here</a>. Both <code class="highlighter-rouge">axios</code> and <code class="highlighter-rouge">fetch()</code> use Promises under the hood. You can also use the <a href="https://davidwalsh.name/async-await">async/await</a> syntax to reduce the callback nesting.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const $ = window.$;
+</code></pre></div></div>
 
-<p>You can learn more about making AJAX requests from React components in <a href="/ajax-and-apis">next chapter</a>.</p>
+<p>This makes it obvious you are using a global variable intentionally rather than because of a typo.</p>
+
+<p>Alternatively, you can force the linter to ignore any line by adding <code class="highlighter-rouge">// eslint-disable-line</code> after it.</p>
 
         
       </section>
@@ -516,12 +519,11 @@
       
   <nav class="pagination">
     
-      <a href="/add-a-css-preprocessor" class="pagination--pager" title="Adding a CSS Preprocessor (Sass, Less etc.)
+      <a href="/inject-data-from-the-server-into-the-page" class="pagination--pager" title="Injecting Data from the Server into the Page
 ">Previous</a>
     
     
-      <a href="/ajax-and-apis" class="pagination--pager" title="AJAX and APIs
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 

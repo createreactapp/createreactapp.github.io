@@ -62,6 +62,8 @@ docs:
         url: /pre-render-into-static-html-files
       - title: "Injecting Data from the Server into the Page"
         url: /inject-data-from-the-server-into-the-page
+      - title: "Using Global Variables"
+        url: /use-global-variables
   # - title: Structure
   #   children:
   #     - title: "Organize Structure"

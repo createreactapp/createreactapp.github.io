@@ -1,0 +1,18 @@
+---
+title: "Using Global Variables"
+permalink: /use-global-variables
+excerpt: ""
+last_modified_at: 2018-05-18T15:58:49-04:00
+---
+
+When you include a script in the HTML file that defines global variables and try to use one of these variables in the code, the linter will complain because it cannot see the definition of the variable.
+
+You can avoid this by reading the global variable explicitly from the `window` object, for example:
+
+```
+const $ = window.$;
+```
+
+This makes it obvious you are using a global variable intentionally rather than because of a typo.
+
+Alternatively, you can force the linter to ignore any line by adding `// eslint-disable-line` after it.
