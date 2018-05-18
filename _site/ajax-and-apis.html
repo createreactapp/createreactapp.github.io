@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Starting the Create React App Development Server - Create React App</title>
+<!-- begin _includes/seo.html --><title>AJAX and APIs - Create React App</title>
 <meta name="description" content="Learn Create React App">
 
 
@@ -17,8 +17,8 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Create React App">
-<meta property="og:title" content="Starting the Create React App Development Server">
-<meta property="og:url" content="/starting-the-create-react-app-development-server">
+<meta property="og:title" content="AJAX and APIs">
+<meta property="og:url" content="/ajax-and-apis">
 
 
   <meta property="og:description" content="Learn Create React App">
@@ -30,9 +30,9 @@
 
 
   <meta name="twitter:site" content="@BunlongVan">
-  <meta name="twitter:title" content="Starting the Create React App Development Server">
+  <meta name="twitter:title" content="AJAX and APIs">
   <meta name="twitter:description" content="Learn Create React App">
-  <meta name="twitter:url" content="/starting-the-create-react-app-development-server">
+  <meta name="twitter:url" content="/ajax-and-apis">
 
   
     <meta name="twitter:card" content="summary">
@@ -49,7 +49,7 @@
 
 
 
-  <meta property="article:modified_time" content="2018-05-15T02:58:49+07:00">
+  <meta property="article:modified_time" content="2018-05-19T02:58:49+07:00">
 
 
 
@@ -58,7 +58,7 @@
   
 
 
-<link rel="canonical" href="/starting-the-create-react-app-development-server">
+<link rel="canonical" href="/ajax-and-apis">
 
 
 
@@ -232,7 +232,7 @@
             
             
 
-            <li><a href="/starting-the-create-react-app-development-server" class="active">Create React App Development Server</a></li>
+            <li><a href="/starting-the-create-react-app-development-server" class="">Create React App Development Server</a></li>
           
         </ul>
         
@@ -324,7 +324,7 @@
             
             
 
-            <li><a href="/ajax-and-apis" class="">AJAX and APIs</a></li>
+            <li><a href="/ajax-and-apis" class="active">AJAX and APIs</a></li>
           
         </ul>
         
@@ -406,15 +406,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Starting the Create React App Development Server">
+    <meta itemprop="headline" content="AJAX and APIs">
     <meta itemprop="description" content="">
     
-    <meta itemprop="dateModified" content="May 15, 2018">
+    <meta itemprop="dateModified" content="May 19, 2018">
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Starting the Create React App Development Server
+          <h1 id="page-title" class="page__title" itemprop="headline">AJAX and APIs
 </h1>
           
         </header>
@@ -422,23 +422,80 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>As was stated in the success message when you ran create-react-app, you just need to run <code class="highlighter-rouge">npm start</code> in your app directory to begin serving the development server. It should auto-open a tab in your browser that points to <code class="highlighter-rouge">http://localhost:3000/</code> (if not, manually visit that address). You will be greeted with the React welcome banner:</p>
+        <p>You can use any AJAX library you like with React. Some popular ones are <a href="https://github.com/axios/axios">axios</a> and the browser built-in <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">fetch</a>.</p>
 
-<p><img src="/assets/images/create-react-app-demo.png" alt="Create React App Demo" /></p>
+<p>You should populate data with AJAX calls in the <code class="highlighter-rouge">componentDidMount</code> lifecycle method. This is so you can use <code class="highlighter-rouge">setState</code> to update your component when the data is retrieved.</p>
 
-<p>As stated, any changes to the source code will live-update here. Let’s see that in action.</p>
+<h2 id="using-ajax-results-to-set-local-state">Using AJAX Results to Set Local State</h2>
 
-<p>Leave the current terminal tab running (it’s busy serving the React app) and open <strong><em>src/App.js</em></strong> in your favorite text editor. You’ll see what looks like a mashup of JavaScript and HTML. This is JSX, which is how React adds XML syntax to JavaScript. It provides an intuitive way to build React components and is compiled to JavaScript at runtime. We’ll delve deeper into this in other content, but for now, let’s make a simple edit and see the update in the browser.</p>
+<p>The component below demonstrates how to make an AJAX call in <code class="highlighter-rouge">componentDidMount</code> to populate local component state.</p>
 
-<p>Change the main paragraph text to read: Hello Create React App! in App.js and save the file.</p>
+<p>The example API returns a JSON object like this:</p>
 
-<p><img src="/assets/images/create-react-app-appjs.png" alt="Create React App Demo" /></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  items: [
+    { id: 1, name: 'Apples', price: '$2' },
+    { id: 2, name: 'Peaches', price: '$5' }
+  ] 
+}
+</code></pre></div></div>
 
-<p>If you left the terminal running, you should be able to switch over to your browser and see the update:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      isLoaded: false,
+      items: []
+    };
+  }
 
-<p><img src="/assets/images/create-react-app-demo-updated.png" alt="Create React App Demo" /></p>
+  componentDidMount() {
+    fetch("https://api.example.com/items")
+      .then(res =&gt; res.json())
+      .then(
+        (result) =&gt; {
+          this.setState({
+            isLoaded: true,
+            items: result.items
+          });
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) =&gt; {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }
 
-<p>Congratulations! You’re now up and running with Create React App.</p>
+  render() {
+    const { error, isLoaded, items } = this.state;
+    if (error) {
+      return &lt;div&gt;Error: {error.message}&lt;/div&gt;;
+    } else if (!isLoaded) {
+      return &lt;div&gt;Loading...&lt;/div&gt;;
+    } else {
+      return (
+        &lt;ul&gt;
+          {items.map(item =&gt; (
+            &lt;li key={item.name}&gt;
+              {item.name} {item.price}
+            &lt;/li&gt;
+          ))}
+        &lt;/ul&gt;
+      );
+    }
+  }
+}
+</code></pre></div></div>
+
+<h2 id="cancellation">Cancellation</h2>
+
+<p>Note that if the component unmounts before an AJAX call is complete, you may see a warning like <code class="highlighter-rouge">cannot read property 'setState' of undefined</code>. If this is an issue you may want to keep track of inflight AJAX requests and cancel them in the <code class="highlighter-rouge">componentWillUnmount</code> lifecycle method.</p>
 
         
       </section>
@@ -449,7 +506,7 @@
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-15">May 15, 2018</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-19">May 19, 2018</time></p>
         
       </footer>
 
@@ -458,12 +515,11 @@
       
   <nav class="pagination">
     
-      <a href="/create-react-app-structure" class="pagination--pager" title="Structure
+      <a href="/fetch-data-with-ajax-request" class="pagination--pager" title="Fetching Data with AJAX Requests
 ">Previous</a>
     
     
-      <a href="/what-is-redux" class="pagination--pager" title="What is Redux?
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 

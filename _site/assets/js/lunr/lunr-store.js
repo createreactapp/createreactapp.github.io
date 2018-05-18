@@ -78,4 +78,14 @@ var store = [{
         "excerpt":"Following this rule often makes CSS preprocessors less useful, as features like mixins and nesting are replaced by component composition. You can, however, integrate a CSS preprocessor if you find it valuable. In this walkthrough, we will be using Sass, but you can also use Less, or another alternative. First,...","categories": [],
         "tags": [],
         "url": "/add-a-css-preprocessor",
+        "teaser":null},{
+        "title": "Fetching Data with AJAX Requests",
+        "excerpt":"React doesn’t prescribe a specific approach to data fetching, but people commonly use either a library like axios or the fetch() API provided by the browser. Conveniently, Create React App includes a polyfill for fetch() so you can use it without worrying about the browser support. The global fetch function...","categories": [],
+        "tags": [],
+        "url": "/fetch-data-with-ajax-request",
+        "teaser":null},{
+        "title": "AJAX and APIs",
+        "excerpt":"You can use any AJAX library you like with React. Some popular ones are axios and the browser built-in fetch. You should populate data with AJAX calls in the componentDidMount lifecycle method. This is so you can use setState to update your component when the data is retrieved. Using AJAX...","categories": [],
+        "tags": [],
+        "url": "/ajax-and-apis",
         "teaser":null},]

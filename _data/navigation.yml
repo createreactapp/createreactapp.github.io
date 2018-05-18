@@ -26,6 +26,12 @@ docs:
         url: /add-bootstrap
       - title: "Adding a CSS Preprocessor"
         url: /add-a-css-preprocessor
+  - title: Fetching Data with AJAX
+    children:
+      - title: "AJAX Requests"
+        url: /fetch-data-with-ajax-request
+      - title: "AJAX and APIs"
+        url: /ajax-and-apis
   - title: Redux
     children:
       - title: "What is Redux?"

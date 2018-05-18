@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Starting the Create React App Development Server - Create React App</title>
+<!-- begin _includes/seo.html --><title>Fetching Data with AJAX Requests - Create React App</title>
 <meta name="description" content="Learn Create React App">
 
 
@@ -17,8 +17,8 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Create React App">
-<meta property="og:title" content="Starting the Create React App Development Server">
-<meta property="og:url" content="/starting-the-create-react-app-development-server">
+<meta property="og:title" content="Fetching Data with AJAX Requests">
+<meta property="og:url" content="/fetch-data-with-ajax-request">
 
 
   <meta property="og:description" content="Learn Create React App">
@@ -30,9 +30,9 @@
 
 
   <meta name="twitter:site" content="@BunlongVan">
-  <meta name="twitter:title" content="Starting the Create React App Development Server">
+  <meta name="twitter:title" content="Fetching Data with AJAX Requests">
   <meta name="twitter:description" content="Learn Create React App">
-  <meta name="twitter:url" content="/starting-the-create-react-app-development-server">
+  <meta name="twitter:url" content="/fetch-data-with-ajax-request">
 
   
     <meta name="twitter:card" content="summary">
@@ -49,7 +49,7 @@
 
 
 
-  <meta property="article:modified_time" content="2018-05-15T02:58:49+07:00">
+  <meta property="article:modified_time" content="2018-05-19T02:58:49+07:00">
 
 
 
@@ -58,7 +58,7 @@
   
 
 
-<link rel="canonical" href="/starting-the-create-react-app-development-server">
+<link rel="canonical" href="/fetch-data-with-ajax-request">
 
 
 
@@ -232,7 +232,7 @@
             
             
 
-            <li><a href="/starting-the-create-react-app-development-server" class="active">Create React App Development Server</a></li>
+            <li><a href="/starting-the-create-react-app-development-server" class="">Create React App Development Server</a></li>
           
         </ul>
         
@@ -316,7 +316,7 @@
             
             
 
-            <li><a href="/fetch-data-with-ajax-request" class="">AJAX Requests</a></li>
+            <li><a href="/fetch-data-with-ajax-request" class="active">AJAX Requests</a></li>
           
             
             
@@ -406,15 +406,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Starting the Create React App Development Server">
+    <meta itemprop="headline" content="Fetching Data with AJAX Requests">
     <meta itemprop="description" content="">
     
-    <meta itemprop="dateModified" content="May 15, 2018">
+    <meta itemprop="dateModified" content="May 19, 2018">
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Starting the Create React App Development Server
+          <h1 id="page-title" class="page__title" itemprop="headline">Fetching Data with AJAX Requests
 </h1>
           
         </header>
@@ -422,23 +422,13 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>As was stated in the success message when you ran create-react-app, you just need to run <code class="highlighter-rouge">npm start</code> in your app directory to begin serving the development server. It should auto-open a tab in your browser that points to <code class="highlighter-rouge">http://localhost:3000/</code> (if not, manually visit that address). You will be greeted with the React welcome banner:</p>
+        <p>React doesn’t prescribe a specific approach to data fetching, but people commonly use either a library like <a href="https://github.com/axios/axios">axios</a> or the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">fetch() API</a> provided by the browser. Conveniently, Create React App includes a polyfill for <code class="highlighter-rouge">fetch()</code> so you can use it without worrying about the browser support.</p>
 
-<p><img src="/assets/images/create-react-app-demo.png" alt="Create React App Demo" /></p>
+<p>The global <code class="highlighter-rouge">fetch</code> function allows to easily makes AJAX requests. It takes in a URL as an input and returns a Promise that resolves to a Response object. You can find more information about <code class="highlighter-rouge">fetch</code> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">here</a>.</p>
 
-<p>As stated, any changes to the source code will live-update here. Let’s see that in action.</p>
+<p>This project also includes a <a href="https://github.com/then/promise">Promise polyfill</a> which provides a full implementation of Promises/A+. A Promise represents the eventual result of an asynchronous operation, you can find more information about Promises <a href="https://www.promisejs.org">here</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">here</a>. Both <code class="highlighter-rouge">axios</code> and <code class="highlighter-rouge">fetch()</code> use Promises under the hood. You can also use the <a href="https://davidwalsh.name/async-await">async/await</a> syntax to reduce the callback nesting.</p>
 
-<p>Leave the current terminal tab running (it’s busy serving the React app) and open <strong><em>src/App.js</em></strong> in your favorite text editor. You’ll see what looks like a mashup of JavaScript and HTML. This is JSX, which is how React adds XML syntax to JavaScript. It provides an intuitive way to build React components and is compiled to JavaScript at runtime. We’ll delve deeper into this in other content, but for now, let’s make a simple edit and see the update in the browser.</p>
-
-<p>Change the main paragraph text to read: Hello Create React App! in App.js and save the file.</p>
-
-<p><img src="/assets/images/create-react-app-appjs.png" alt="Create React App Demo" /></p>
-
-<p>If you left the terminal running, you should be able to switch over to your browser and see the update:</p>
-
-<p><img src="/assets/images/create-react-app-demo-updated.png" alt="Create React App Demo" /></p>
-
-<p>Congratulations! You’re now up and running with Create React App.</p>
+<p>You can learn more about making AJAX requests from React components in <a href="">next chapter</a>.</p>
 
         
       </section>
@@ -449,7 +439,7 @@
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-15">May 15, 2018</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-19">May 19, 2018</time></p>
         
       </footer>
 
@@ -458,11 +448,11 @@
       
   <nav class="pagination">
     
-      <a href="/create-react-app-structure" class="pagination--pager" title="Structure
+      <a href="/add-a-css-preprocessor" class="pagination--pager" title="Adding a CSS Preprocessor (Sass, Less etc.)
 ">Previous</a>
     
     
-      <a href="/what-is-redux" class="pagination--pager" title="What is Redux?
+      <a href="/ajax-and-apis" class="pagination--pager" title="AJAX and APIs
 ">Next</a>
     
   </nav>
