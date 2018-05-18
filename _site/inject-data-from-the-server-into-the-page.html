@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Adding a CSS Preprocessor (Sass, Less etc.) - Create React App</title>
+<!-- begin _includes/seo.html --><title>Injecting Data from the Server into the Page - Create React App</title>
 <meta name="description" content="Learn Create React App">
 
 
@@ -17,8 +17,8 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Create React App">
-<meta property="og:title" content="Adding a CSS Preprocessor (Sass, Less etc.)">
-<meta property="og:url" content="http://localhost:4000/add-a-css-preprocessor">
+<meta property="og:title" content="Injecting Data from the Server into the Page">
+<meta property="og:url" content="http://localhost:4000/inject-data-from-the-server-into-the-page">
 
 
   <meta property="og:description" content="Learn Create React App">
@@ -30,9 +30,9 @@
 
 
   <meta name="twitter:site" content="@BunlongVan">
-  <meta name="twitter:title" content="Adding a CSS Preprocessor (Sass, Less etc.)">
+  <meta name="twitter:title" content="Injecting Data from the Server into the Page">
   <meta name="twitter:description" content="Learn Create React App">
-  <meta name="twitter:url" content="http://localhost:4000/add-a-css-preprocessor">
+  <meta name="twitter:url" content="http://localhost:4000/inject-data-from-the-server-into-the-page">
 
   
     <meta name="twitter:card" content="summary">
@@ -49,7 +49,7 @@
 
 
 
-  <meta property="article:modified_time" content="2018-05-18T02:58:49+07:00">
+  <meta property="article:modified_time" content="2018-05-19T02:58:49+07:00">
 
 
 
@@ -58,7 +58,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/add-a-css-preprocessor">
+<link rel="canonical" href="http://localhost:4000/inject-data-from-the-server-into-the-page">
 
 
 
@@ -304,7 +304,7 @@
             
             
 
-            <li><a href="/add-a-css-preprocessor" class="active">Adding a CSS Preprocessor</a></li>
+            <li><a href="/add-a-css-preprocessor" class="">Adding a CSS Preprocessor</a></li>
           
         </ul>
         
@@ -452,7 +452,7 @@
             
             
 
-            <li><a href="/inject-data-from-the-server-into-the-page" class="">Injecting Data from the Server into the Page</a></li>
+            <li><a href="/inject-data-from-the-server-into-the-page" class="active">Injecting Data from the Server into the Page</a></li>
           
         </ul>
         
@@ -466,15 +466,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Adding a CSS Preprocessor (Sass, Less etc.)">
+    <meta itemprop="headline" content="Injecting Data from the Server into the Page">
     <meta itemprop="description" content="">
     
-    <meta itemprop="dateModified" content="May 18, 2018">
+    <meta itemprop="dateModified" content="May 19, 2018">
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Adding a CSS Preprocessor (Sass, Less etc.)
+          <h1 id="page-title" class="page__title" itemprop="headline">Injecting Data from the Server into the Page
 </h1>
           
         </header>
@@ -482,77 +482,17 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>Following this rule often makes CSS preprocessors less useful, as features like mixins and nesting are replaced by component composition. You can, however, integrate a CSS preprocessor if you find it valuable. In this walkthrough, we will be using Sass, but you can also use Less, or another alternative.</p>
+        <p>Similarly to the previous section, you can leave some placeholders in the HTML that inject global variables, for example:</p>
 
-<p>First, let’s install the command-line interface for Sass:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install --save node-sass-chokidar
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">SERVER_DATA</span> <span class="o">=</span> <span class="nx">__SERVER_DATA__</span><span class="p">;</span>
+    <span class="nt">&lt;/script&gt;</span>
 </code></pre></div></div>
 
-<p>Then in <code class="highlighter-rouge">package.json</code>, add the following lines to scripts:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> "scripts": {
-+   "build-css": "node-sass-chokidar src/ -o src/",
-+   "watch-css": "npm run build-css &amp;&amp; node-sass-chokidar src/ -o src/ --watch --recursive",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-</code></pre></div></div>
-
-<p class="notice--warning"><strong>Note:</strong> To use a different preprocessor, replace build-css and watch-css commands according to your preprocessor’s documentation.</p>
-
-<p>Now you can rename <code class="highlighter-rouge">src/App.css</code> to <code class="highlighter-rouge">src/App.scss</code> and run <code class="highlighter-rouge">npm run watch-css</code>. The watcher will find every Sass file in <code class="highlighter-rouge">src</code> subdirectories, and create a corresponding CSS file next to it, in our case overwriting <code class="highlighter-rouge">src/App.css</code>. Since <code class="highlighter-rouge">src/App.js</code> still imports <code class="highlighter-rouge">src/App.css</code>, the styles become a part of your application. You can now edit <code class="highlighter-rouge">src/App.scss</code>, and <code class="highlighter-rouge">src/App.css</code> will be regenerated.</p>
-
-<p>To share variables between Sass files, you can use Sass imports. For example, <code class="highlighter-rouge">src/App.scss</code> and other component style files could include <code class="highlighter-rouge">@import "./shared.scss";</code> with variable definitions.</p>
-
-<p>To enable importing files without using relative paths, you can add the <code class="highlighter-rouge">--include-path</code> option to the command in <code class="highlighter-rouge">package.json</code>.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
-"watch-css": "npm run build-css &amp;&amp; node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
-</code></pre></div></div>
-
-<p>This will allow you to do imports like:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@import 'styles/_colors.scss'; // assuming a styles directory under src/
-@import 'nprogress/nprogress'; // importing a css file from the nprogress node module
-</code></pre></div></div>
-
-<p>At this point you might want to remove all CSS files from the source control, and add <code class="highlighter-rouge">src/**/*.css</code> to your <code class="highlighter-rouge">.gitignore</code> file. It is generally a good practice to keep the build products outside of the source control.</p>
-
-<p>As a final step, you may find it convenient to run <code class="highlighter-rouge">watch-css</code> automatically with <code class="highlighter-rouge">npm start</code>, and run <code class="highlighter-rouge">build-css</code> as a part of npm run build. You can use the <code class="highlighter-rouge">&amp;&amp;</code> operator to execute two scripts sequentially. However, there is no cross-platform way to run two scripts in parallel, so we will install a package for this:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install --save npm-run-all
-</code></pre></div></div>
-
-<p>Then we can change <code class="highlighter-rouge">start</code> and <code class="highlighter-rouge">build</code> scripts to include the CSS preprocessor commands:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> "scripts": {
-    "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css &amp;&amp; node-sass-chokidar src/ -o src/ --watch --recursive",
--   "start": "react-scripts start",
--   "build": "react-scripts build",
-+   "start-js": "react-scripts start",
-+   "start": "npm-run-all -p watch-css start-js",
-+   "build-js": "react-scripts build",
-+   "build": "npm-run-all build-css build-js",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-   }
-</code></pre></div></div>
-
-<p>Now running <code class="highlighter-rouge">npm start</code> and <code class="highlighter-rouge">npm run build</code> also builds Sass files.</p>
-
-<p><strong><em>Why node-sass-chokidar?</em></strong></p>
-
-<p><code class="highlighter-rouge">node-sass</code> has been reported as having the following issues:</p>
-
-<ul>
-  <li><code class="highlighter-rouge">node-sass --watch</code> has been reported to have performance issues in certain conditions when used in a virtual machine or with docker.</li>
-  <li>Infinite styles compiling <a href="https://github.com/facebook/create-react-app/issues/1939">1939</a></li>
-  <li><code class="highlighter-rouge">node-sass</code> has been reported as having issues with detecting new files in a directory <a href="https://github.com/sass/node-sass/issues/1891">1891</a></li>
-</ul>
-
-<p><code class="highlighter-rouge">node-sass-chokidar</code> is used here as it addresses these issues.</p>
+<p>Then, on the server, you can replace <code class="highlighter-rouge">__SERVER_DATA__</code> with a JSON of real data right before sending the response. The client code can then read <code class="highlighter-rouge">window.SERVER_DATA</code> to use it. Make sure to <a href="https://medium.com/node-security/the-most-common-xss-vulnerability-in-react-js-applications-2bdffbcc1fa0">sanitize the JSON before sending it to the client</a> as it makes your app vulnerable to XSS attacks.</p>
 
         
       </section>
@@ -563,7 +503,7 @@
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-18">May 18, 2018</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-19">May 19, 2018</time></p>
         
       </footer>
 
@@ -572,12 +512,11 @@
       
   <nav class="pagination">
     
-      <a href="/add-bootstrap" class="pagination--pager" title="Adding Bootstrap
+      <a href="/pre-render-into-static-html-files" class="pagination--pager" title="Pre-Rendering into Static HTML Files
 ">Previous</a>
     
     
-      <a href="/fetch-data-with-ajax-request" class="pagination--pager" title="Fetching Data with AJAX Requests
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 

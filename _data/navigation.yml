@@ -60,6 +60,8 @@ docs:
         url: /generate-dynamic-meta-tags-on-the-server
       - title: "Pre-Rendering into Static HTML Files"
         url: /pre-render-into-static-html-files
+      - title: "Injecting Data from the Server into the Page"
+        url: /inject-data-from-the-server-into-the-page
   # - title: Structure
   #   children:
   #     - title: "Organize Structure"
