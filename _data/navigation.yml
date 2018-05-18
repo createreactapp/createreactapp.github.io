@@ -34,6 +34,8 @@ docs:
         url: /ajax-and-apis
       - title: "Proxying API Requests"
         url: /proxying-api-request
+      - title: "Using HTTPS in Development"
+        url: /use-https-in-development
   - title: Redux
     children:
       - title: "What is Redux?"

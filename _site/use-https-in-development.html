@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Adding a Router - Create React App</title>
+<!-- begin _includes/seo.html --><title>Using HTTPS in Development - Create React App</title>
 <meta name="description" content="Learn Create React App">
 
 
@@ -17,8 +17,8 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Create React App">
-<meta property="og:title" content="Adding a Router">
-<meta property="og:url" content="/add-a-router">
+<meta property="og:title" content="Using HTTPS in Development">
+<meta property="og:url" content="/use-https-in-development">
 
 
   <meta property="og:description" content="Learn Create React App">
@@ -30,9 +30,9 @@
 
 
   <meta name="twitter:site" content="@BunlongVan">
-  <meta name="twitter:title" content="Adding a Router">
+  <meta name="twitter:title" content="Using HTTPS in Development">
   <meta name="twitter:description" content="Learn Create React App">
-  <meta name="twitter:url" content="/add-a-router">
+  <meta name="twitter:url" content="/use-https-in-development">
 
   
     <meta name="twitter:card" content="summary">
@@ -49,7 +49,7 @@
 
 
 
-  <meta property="article:modified_time" content="2018-05-18T02:58:49+07:00">
+  <meta property="article:modified_time" content="2018-05-19T02:58:49+07:00">
 
 
 
@@ -58,7 +58,7 @@
   
 
 
-<link rel="canonical" href="/add-a-router">
+<link rel="canonical" href="/use-https-in-development">
 
 
 
@@ -260,7 +260,7 @@
             
             
 
-            <li><a href="/add-a-router" class="active">Adding a Router</a></li>
+            <li><a href="/add-a-router" class="">Adding a Router</a></li>
           
         </ul>
         
@@ -340,7 +340,7 @@
             
             
 
-            <li><a href="/use-https-in-development" class="">Using HTTPS in Development</a></li>
+            <li><a href="/use-https-in-development" class="active">Using HTTPS in Development</a></li>
           
         </ul>
         
@@ -422,15 +422,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Adding a Router">
+    <meta itemprop="headline" content="Using HTTPS in Development">
     <meta itemprop="description" content="">
     
-    <meta itemprop="dateModified" content="May 18, 2018">
+    <meta itemprop="dateModified" content="May 19, 2018">
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Adding a Router
+          <h1 id="page-title" class="page__title" itemprop="headline">Using HTTPS in Development
 </h1>
           
         </header>
@@ -438,86 +438,29 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>We will use React to build a very simple app.</p>
+        <p>You may require the dev server to serve pages over HTTPS. One particular case where this could be useful is when using <a href="/proxying-api-request">the “proxy” feature</a> to proxy requests to an API server when that API server is itself serving HTTPS.</p>
 
-<h2 id="installing-crate-react-app">Installing Crate React APP</h2>
+<p>To do this, set the <code class="highlighter-rouge">HTTPS</code> environment variable to <code class="highlighter-rouge">true</code>, then start the dev server as usual with <code class="highlighter-rouge">npm start</code>:</p>
 
-<p>To get React projects up and running quickly with Create React App, get a look the <a href="/install-create-react-app">previous chapter</a>.</p>
+<p><code class="highlighter-rouge">Linux, macOS (Bash)</code></p>
 
-<h2 id="installing-react-redux">Installing React Redux</h2>
-
-<p>Open up your terminal and run:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install --save react-router-dom
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTPS=true npm start
 </code></pre></div></div>
 
-<p>Now, we will add routes to the app. Instead of rendering App element. Add more files in <code class="highlighter-rouge">src</code> folder and named as <code class="highlighter-rouge">Home.js</code> and <code class="highlighter-rouge">Login.js</code>.</p>
+<p><code class="highlighter-rouge">Windows (cmd.exe)</code></p>
 
-<p>‘App.js’</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Home from './Home';
-import Login from './Login';
-
-class App extends Component {
-  render() {
-    return (
-      &lt;Router&gt;
-        &lt;div&gt;
-           &lt;h2&gt;Welcome to React Router&lt;/h2&gt;
-           &lt;ul&gt;
-              &lt;li&gt;&lt;Link to={'/'}&gt;Home&lt;/Link&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;Link to={'/Login'}&gt;Login&lt;/Link&gt;&lt;/li&gt;
-           &lt;/ul&gt;
-           &lt;hr /&gt;
-           
-           &lt;Switch&gt;
-              &lt;Route exact path='/' component={Home} /&gt;
-              &lt;Route exact path='/Login' component={Login} /&gt;
-           &lt;/Switch&gt;
-        &lt;/div&gt;
-     &lt;/Router&gt;
-    );
-  }
-}
-
-export default App;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set HTTPS=true&amp;&amp;npm start
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">Home.js</code></p>
+<p><code class="highlighter-rouge">Windows (Powershell)</code></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React, { Component } from 'react';
-
-class Home extends Component {
-   render() {
-      return (
-         &lt;div&gt;
-            &lt;h2&gt;Home&lt;/h2&gt;
-         &lt;/div&gt;
-      );
-   }
-}
-
-export default Home;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>($env:HTTPS = $true) -and (npm start)
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">Login.js</code></p>
+<p>(Note: the lack of whitespace is intentional.)</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React, { Component } from 'react';
+<p>Note that the server will use a self-signed certificate, so your web browser will almost definitely display a warning upon accessing the page.</p>
 
-class Login extends Component {
-   render() {
-      return (
-         &lt;div&gt;
-            &lt;h2&gt;Login&lt;/h2&gt;
-         &lt;/div&gt;
-      );
-   }
-}
-
-export default Login;
-</code></pre></div></div>
 
         
       </section>
@@ -528,7 +471,7 @@ export default Login;
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-18">May 18, 2018</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-19">May 19, 2018</time></p>
         
       </footer>
 
@@ -537,12 +480,11 @@ export default Login;
       
   <nav class="pagination">
     
-      <a href="/install-router" class="pagination--pager" title="Installation
+      <a href="/proxying-api-request" class="pagination--pager" title="Proxying API Requests in Development
 ">Previous</a>
     
     
-      <a href="/add-a-stylesheet" class="pagination--pager" title="Adding a Stylesheet
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
