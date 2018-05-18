@@ -32,6 +32,8 @@ docs:
         url: /fetch-data-with-ajax-request
       - title: "AJAX and APIs"
         url: /ajax-and-apis
+      - title: "Proxying API Requests"
+        url: /proxying-api-request
   - title: Redux
     children:
       - title: "What is Redux?"

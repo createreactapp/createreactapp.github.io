@@ -88,4 +88,9 @@ var store = [{
         "excerpt":"You can use any AJAX library you like with React. Some popular ones are axios and the browser built-in fetch. You should populate data with AJAX calls in the componentDidMount lifecycle method. This is so you can use setState to update your component when the data is retrieved. Using AJAX...","categories": [],
         "tags": [],
         "url": "/ajax-and-apis",
+        "teaser":null},{
+        "title": "Proxying API Requests in Development",
+        "excerpt":"People often serve the front-end React app from the same host and port as their backend implementation.For example, a production setup might look like this after the app is deployed: / - static server returns index.html with React app/todos - static server returns index.html with React app/api/todos - server handles...","categories": [],
+        "tags": [],
+        "url": "/proxying-api-request",
         "teaser":null},]
