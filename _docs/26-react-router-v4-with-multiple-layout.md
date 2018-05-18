@@ -83,7 +83,7 @@ Now, we will add routes to the app. Instead of rendering App element.
 
 ```
 import React from 'react';
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect, Switch, Link } from 'react-router-dom';
 
 // Login layout
 
@@ -109,6 +109,11 @@ const LoginLayoutRoute = ({component: Component, ...rest}) => {
 const AppLayout = ({ children }) => (                       
   <div>
     <p>App Layout</p>
+    <br/>
+    <ul>
+      <li><Link to={'/homes'}>Home</Link></li>
+      <li><Link to={'/users'}>User</Link></li>
+    </ul>
     {children}                                          
   </div>           
 );

@@ -45,7 +45,7 @@
 
 
 
-  <meta property="article:published_time" content="2018-05-18T16:42:47+07:00">
+  <meta property="article:published_time" content="2018-05-18T16:55:22+07:00">
 
 
 
@@ -571,7 +571,7 @@ const AppLayoutRoute = ({component: Component, ...rest}) =&gt; {
 <p><code class="highlighter-rouge">App.js</code></p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React from 'react';
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect, Switch, Link } from 'react-router-dom';
 
 // Login layout
 
@@ -597,6 +597,11 @@ const LoginLayoutRoute = ({component: Component, ...rest}) =&gt; {
 const AppLayout = ({ children }) =&gt; (                       
   &lt;div&gt;
     &lt;p&gt;App Layout&lt;/p&gt;
+    &lt;br/&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;Link to={'/homes'}&gt;Home&lt;/Link&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;Link to={'/users'}&gt;User&lt;/Link&gt;&lt;/li&gt;
+    &lt;/ul&gt;
     {children}                                          
   &lt;/div&gt;           
 );
