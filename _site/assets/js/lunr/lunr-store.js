@@ -108,4 +108,9 @@ var store = [{
         "excerpt":"Since Create React App doesn’t support server rendering, you might be wondering how to make &lt;meta&gt; tags dynamic and reflect the current URL. To solve this, we recommend to add placeholders into the HTML, like this: &lt;!doctype html&gt;&lt;html lang=\"en\"&gt; &lt;head&gt; &lt;meta property=\"og:title\" content=\"__OG_TITLE__\"&gt; &lt;meta property=\"og:description\" content=\"__OG_DESCRIPTION__\"&gt;Then, on the server, regardless...","categories": [],
         "tags": [],
         "url": "/generate-dynamic-meta-tags-on-the-server",
+        "teaser":null},{
+        "title": "Pre-Rendering into Static HTML Files",
+        "excerpt":"If you’re hosting your build with a static hosting provider you can use react-snapshot or react-snap to generate HTML pages for each route, or relative link, in your application. These pages will then seamlessly become active, or “hydrated”, when the JavaScript bundle has loaded. There are also opportunities to use...","categories": [],
+        "tags": [],
+        "url": "/pre-render-into-static-html-files",
         "teaser":null},]

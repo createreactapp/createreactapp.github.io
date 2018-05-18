@@ -58,6 +58,8 @@ docs:
     children:
       - title: "Generating Dynamic meta Tags on the Server"
         url: /generate-dynamic-meta-tags-on-the-server
+      - title: "Pre-Rendering into Static HTML Files"
+        url: /pre-render-into-static-html-files
   # - title: Structure
   #   children:
   #     - title: "Organize Structure"

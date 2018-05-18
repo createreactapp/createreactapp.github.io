@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Example Todo List - Create React App</title>
+<!-- begin _includes/seo.html --><title>Pre-Rendering into Static HTML Files - Create React App</title>
 <meta name="description" content="Learn Create React App">
 
 
@@ -17,8 +17,8 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Create React App">
-<meta property="og:title" content="Example Todo List">
-<meta property="og:url" content="/example-todo-list">
+<meta property="og:title" content="Pre-Rendering into Static HTML Files">
+<meta property="og:url" content="/pre-render-into-static-html-files">
 
 
   <meta property="og:description" content="Learn Create React App">
@@ -30,9 +30,9 @@
 
 
   <meta name="twitter:site" content="@BunlongVan">
-  <meta name="twitter:title" content="Example Todo List">
+  <meta name="twitter:title" content="Pre-Rendering into Static HTML Files">
   <meta name="twitter:description" content="Learn Create React App">
-  <meta name="twitter:url" content="/example-todo-list">
+  <meta name="twitter:url" content="/pre-render-into-static-html-files">
 
   
     <meta name="twitter:card" content="summary">
@@ -49,7 +49,7 @@
 
 
 
-  <meta property="article:modified_time" content="2018-05-18T02:58:49+07:00">
+  <meta property="article:modified_time" content="2018-05-19T02:58:49+07:00">
 
 
 
@@ -58,7 +58,7 @@
   
 
 
-<link rel="canonical" href="/example-todo-list">
+<link rel="canonical" href="/pre-render-into-static-html-files">
 
 
 
@@ -416,7 +416,7 @@
             
             
 
-            <li><a href="/example-todo-list" class="active">Example Todo List</a></li>
+            <li><a href="/example-todo-list" class="">Example Todo List</a></li>
           
         </ul>
         
@@ -444,7 +444,7 @@
             
             
 
-            <li><a href="/pre-render-into-static-html-files" class="">Pre-Rendering into Static HTML Files</a></li>
+            <li><a href="/pre-render-into-static-html-files" class="active">Pre-Rendering into Static HTML Files</a></li>
           
         </ul>
         
@@ -458,15 +458,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Example Todo List">
+    <meta itemprop="headline" content="Pre-Rendering into Static HTML Files">
     <meta itemprop="description" content="">
     
-    <meta itemprop="dateModified" content="May 18, 2018">
+    <meta itemprop="dateModified" content="May 19, 2018">
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Example Todo List
+          <h1 id="page-title" class="page__title" itemprop="headline">Pre-Rendering into Static HTML Files
 </h1>
           
         </header>
@@ -474,245 +474,13 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>This is the complete source code of the tiny todo app we built during the <a href="/usage-with-redux">basics tutorial</a>.</p>
+        <p>If you’re hosting your build with a static hosting provider you can use <a href="https://www.npmjs.com/package/react-snapshot">react-snapshot</a> or <a href="https://github.com/stereobooster/react-snap">react-snap</a> to generate HTML pages for each route, or relative link, in your application. These pages will then seamlessly become active, or “hydrated”, when the JavaScript bundle has loaded.</p>
 
-<h2 id="entry-point">Entry Point</h2>
+<p>There are also opportunities to use this outside of static hosting, to take the pressure off the server when generating and caching routes.</p>
 
-<p><code class="highlighter-rouge">index.js</code></p>
+<p>The primary benefit of pre-rendering is that you get the core content of each page with the HTML payload—regardless of whether or not your JavaScript bundle successfully downloads. It also increases the likelihood that each route of your application will be picked up by search engines.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React from 'react'
-import { render } from 'react-dom'
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import App from './components/App'
-import rootReducer from './reducers'
-
-const store = createStore(rootReducer)
-
-render(
-  &lt;Provider store={store}&gt;
-    &lt;App /&gt;
-  &lt;/Provider&gt;,
-  document.getElementById('root')
-)
-</code></pre></div></div>
-
-<h2 id="action-creators">Action Creators</h2>
-
-<p><code class="highlighter-rouge">actions/index.js</code></p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let nextTodoId = 0
-
-export const addTodo = text =&gt; ({
-  type: 'ADD_TODO',
-  id: nextTodoId++,
-  text
-})
-
-export const toggleTodo = id =&gt; ({
-  type: 'TOGGLE_TODO',
-  id
-})
-
-export const VisibilityFilters = {
-  SHOW_ALL: 'SHOW_ALL'
-}
-</code></pre></div></div>
-
-<h2 id="reducers">Reducers</h2>
-
-<p><code class="highlighter-rouge">reducers/todos.js</code></p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const todos = (state = [], action) =&gt; {
-  switch (action.type) {
-    case 'ADD_TODO':
-      return [
-        ...state,
-        {
-          id: action.id,
-          text: action.text,
-          completed: false
-        }
-      ]
-    case 'TOGGLE_TODO':
-      return state.map(todo =&gt;
-        (todo.id === action.id)
-          ? {...todo, completed: !todo.completed}
-          : todo
-      )
-    default:
-      return state
-  }
-}
-
-export default todos
-</code></pre></div></div>
-
-<p><code class="highlighter-rouge">reducers/visibilityFilter.js</code></p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import { VisibilityFilters } from '../actions'
-
-const visibilityFilter = (state = VisibilityFilters.SHOW_ALL, action) =&gt; {
-  switch (action.type) {
-    case 'SET_VISIBILITY_FILTER':
-      return action.filter
-    default:
-      return state
-  }
-}
-
-export default visibilityFilter
-</code></pre></div></div>
-
-<p><code class="highlighter-rouge">reducers/index.js</code></p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import { combineReducers } from 'redux'
-import todos from './todos'
-import visibilityFilter from './visibilityFilter'
-
-export default combineReducers({
-  todos,
-  visibilityFilter
-})
-</code></pre></div></div>
-
-<h2 id="presentational-components">Presentational Components</h2>
-
-<p><code class="highlighter-rouge">components/Todo.js</code></p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React from 'react'
-import PropTypes from 'prop-types'
-
-const Todo = ({ onClick, completed, text }) =&gt; (
-  &lt;li
-    onClick={onClick}
-    style={ {
-      textDecoration: completed ? 'line-through' : 'none'
-    } }
-  &gt;
-    {text}
-  &lt;/li&gt;
-)
-
-Todo.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  completed: PropTypes.bool.isRequired,
-  text: PropTypes.string.isRequired
-}
-
-export default Todo
-</code></pre></div></div>
-
-<p><code class="highlighter-rouge">components/TodoList.js</code></p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React from 'react'
-import PropTypes from 'prop-types'
-import Todo from './Todo'
-
-const TodoList = ({ todos, toggleTodo }) =&gt; (
-  &lt;ul&gt;
-    {todos.map(todo =&gt;
-      &lt;Todo
-        key={todo.id}
-        {...todo} 
-        onClick={() =&gt; toggleTodo(todo.id)}
-      /&gt;
-    )}
-  &lt;/ul&gt;
-)
-
-TodoList.propTypes = {
-  todos: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    completed: PropTypes.bool.isRequired,
-    text: PropTypes.string.isRequired
-  }).isRequired).isRequired,
-  toggleTodo: PropTypes.func.isRequired
-}
-
-export default TodoList
-</code></pre></div></div>
-
-<p><code class="highlighter-rouge">components/App.js</code></p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React from 'react'
-import AddTodo from '../containers/AddTodo'
-import VisibleTodoList from '../containers/VisibleTodoList'
-
-const App = () =&gt; (
-  &lt;div&gt;
-    &lt;AddTodo /&gt;
-    &lt;VisibleTodoList /&gt;
-  &lt;/div&gt;
-)
-
-export default App
-</code></pre></div></div>
-
-<h2 id="container-components">Container Components</h2>
-
-<p><code class="highlighter-rouge">containers/VisibleTodoList.js</code></p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import { connect } from 'react-redux'
-import { toggleTodo } from '../actions'
-import TodoList from '../components/TodoList'
-import { VisibilityFilters } from '../actions'
-
-const getVisibleTodos = (todos, filter) =&gt; {
-  switch (filter) {
-    case VisibilityFilters.SHOW_ALL:
-      return todos
-    default:
-      throw new Error('Unknown filter: ' + filter)
-  }
-}
-
-const mapStateToProps = state =&gt; ({
-  todos: getVisibleTodos(state.todos, state.visibilityFilter)
-})
-
-const mapDispatchToProps = dispatch =&gt; ({
-  toggleTodo: id =&gt; dispatch(toggleTodo(id))
-})
-
-export default connect(
-  mapStateToProps, 
-  mapDispatchToProps
-)(TodoList)
-</code></pre></div></div>
-
-<h2 id="other-components">Other Components</h2>
-
-<p><code class="highlighter-rouge">containers/AddTodo.js</code></p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React from 'react'
-import { connect } from 'react-redux'
-import { addTodo } from '../actions'
-
-const AddTodo = ({ dispatch }) =&gt; {
-  let input
-
-  return (
-    &lt;div&gt;
-      &lt;form onSubmit={e =&gt; {
-        e.preventDefault()
-        if (!input.value.trim()) {
-          return
-        }
-        dispatch(addTodo(input.value))
-        input.value = ''
-      }}&gt;
-        &lt;input ref={node =&gt; input = node} /&gt;
-        &lt;button type="submit"&gt;
-          Add Todo
-        &lt;/button&gt;
-      &lt;/form&gt;
-    &lt;/div&gt;
-  )
-}
-
-export default connect()(AddTodo)
-</code></pre></div></div>
+<p>You can read more about <a href="https://medium.com/superhighfives/an-almost-static-stack-6df0a2791319">zero-configuration pre-rendering (also called snapshotting) here</a>.</p>
 
         
       </section>
@@ -723,7 +491,7 @@ export default connect()(AddTodo)
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-18">May 18, 2018</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-19">May 19, 2018</time></p>
         
       </footer>
 
@@ -732,12 +500,11 @@ export default connect()(AddTodo)
       
   <nav class="pagination">
     
-      <a href="/usage-with-redux" class="pagination--pager" title="Usage with React
+      <a href="/generate-dynamic-meta-tags-on-the-server" class="pagination--pager" title="Generating Dynamic meta Tags on the Server
 ">Previous</a>
     
     
-      <a href="/install-router" class="pagination--pager" title="Installation
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
