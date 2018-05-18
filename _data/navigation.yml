@@ -54,6 +54,10 @@ docs:
         url: /usage-with-redux
       - title: "Example Todo List"
         url: /example-todo-list
+  - title: SEO
+    children:
+      - title: "Generating Dynamic meta Tags on the Server"
+        url: /generate-dynamic-meta-tags-on-the-server
   # - title: Structure
   #   children:
   #     - title: "Organize Structure"

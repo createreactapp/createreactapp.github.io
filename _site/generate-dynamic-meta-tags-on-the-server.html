@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Proxying API Requests in Development - Create React App</title>
+<!-- begin _includes/seo.html --><title>Generating Dynamic meta Tags on the Server - Create React App</title>
 <meta name="description" content="Learn Create React App">
 
 
@@ -17,8 +17,8 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Create React App">
-<meta property="og:title" content="Proxying API Requests in Development">
-<meta property="og:url" content="/proxying-api-request">
+<meta property="og:title" content="Generating Dynamic meta Tags on the Server">
+<meta property="og:url" content="/generate-dynamic-meta-tags-on-the-server">
 
 
   <meta property="og:description" content="Learn Create React App">
@@ -30,9 +30,9 @@
 
 
   <meta name="twitter:site" content="@BunlongVan">
-  <meta name="twitter:title" content="Proxying API Requests in Development">
+  <meta name="twitter:title" content="Generating Dynamic meta Tags on the Server">
   <meta name="twitter:description" content="Learn Create React App">
-  <meta name="twitter:url" content="/proxying-api-request">
+  <meta name="twitter:url" content="/generate-dynamic-meta-tags-on-the-server">
 
   
     <meta name="twitter:card" content="summary">
@@ -58,7 +58,7 @@
   
 
 
-<link rel="canonical" href="/proxying-api-request">
+<link rel="canonical" href="/generate-dynamic-meta-tags-on-the-server">
 
 
 
@@ -340,7 +340,7 @@
             
             
 
-            <li><a href="/proxying-api-request" class="active">Proxying API Requests</a></li>
+            <li><a href="/proxying-api-request" class="">Proxying API Requests</a></li>
           
             
             
@@ -436,7 +436,7 @@
             
             
 
-            <li><a href="/generate-dynamic-meta-tags-on-the-server" class="">Generating Dynamic meta Tags on the Server</a></li>
+            <li><a href="/generate-dynamic-meta-tags-on-the-server" class="active">Generating Dynamic meta Tags on the Server</a></li>
           
         </ul>
         
@@ -450,7 +450,7 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Proxying API Requests in Development">
+    <meta itemprop="headline" content="Generating Dynamic meta Tags on the Server">
     <meta itemprop="description" content="">
     
     <meta itemprop="dateModified" content="May 19, 2018">
@@ -458,7 +458,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Proxying API Requests in Development
+          <h1 id="page-title" class="page__title" itemprop="headline">Generating Dynamic meta Tags on the Server
 </h1>
           
         </header>
@@ -466,122 +466,19 @@
 
       <section class="page__content" itemprop="text">
         
-          <aside class="sidebar__right">
-            <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
-              <ul class="toc__menu">
-  <li><a href="#configuring-the-proxy-manually">Configuring the Proxy Manually</a></li>
-  <li><a href="#configuring-a-websocket-proxy">Configuring a WebSocket Proxy</a></li>
-</ul>
-            </nav>
-          </aside>
-        
-        <p>People often serve the front-end React app from the same host and port as their backend implementation.
-For example, a production setup might look like this after the app is deployed:</p>
+        <p>Since Create React App doesn’t support server rendering, you might be wondering how to make <code class="highlighter-rouge">&lt;meta&gt;</code> tags dynamic and reflect the current URL. To solve this, we recommend to add placeholders into the HTML, like this:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/             - static server returns index.html with React app
-/todos        - static server returns index.html with React app
-/api/todos    - server handles any /api/* requests using the backend implementation
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">property=</span><span class="s">"og:title"</span> <span class="na">content=</span><span class="s">"__OG_TITLE__"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">property=</span><span class="s">"og:description"</span> <span class="na">content=</span><span class="s">"__OG_DESCRIPTION__"</span><span class="nt">&gt;</span>
 </code></pre></div></div>
 
-<p>Such setup is not required. However, if you do have a setup like this, it is convenient to write requests like <code class="highlighter-rouge">fetch('/api/todos')</code> without worrying about redirecting them to another host or port during development.</p>
+<p>Then, on the server, regardless of the backend you use, you can read <code class="highlighter-rouge">index.html</code> into memory and replace <code class="highlighter-rouge">__OG_TITLE__</code>, <code class="highlighter-rouge">__OG_DESCRIPTION__</code>, and any other placeholders with values depending on the current URL. Just make sure to sanitize and escape the interpolated values so that they are safe to embed into HTML!</p>
 
-<p>To tell the development server to proxy any unknown requests to your API server in development, add a <code class="highlighter-rouge">proxy</code> field to your <code class="highlighter-rouge">package.json</code>, for example:</p>
+<p>If you use a Node server, you can even share the route matching logic between the client and the server. However duplicating it also works fine in simple cases.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"proxy": "http://localhost:4000",
-</code></pre></div></div>
-
-<p>This way, when you <code class="highlighter-rouge">fetch('/api/todos')</code> in development, the development server will recognize that it’s not a static asset, and will proxy your request to <code class="highlighter-rouge">http://localhost:4000/api/todos</code> as a fallback. The development server will only attempt to send requests without <code class="highlighter-rouge">text/html</code> in its <code class="highlighter-rouge">Accept</code> header to the proxy.</p>
-
-<p>Conveniently, this avoids <a href="https://stackoverflow.com/questions/21854516/understanding-ajax-cors-and-security-considerations">CORS issues</a> and error messages like this in development:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Fetch API cannot load http://localhost:4000/api/todos. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://localhost:3000' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
-</code></pre></div></div>
-
-<p>Keep in mind that <code class="highlighter-rouge">proxy</code> only has effect in development (with <code class="highlighter-rouge">npm start</code>), and it is up to you to ensure that URLs like <code class="highlighter-rouge">/api/todos</code> point to the right thing in production. You don’t have to use the <code class="highlighter-rouge">/api</code> prefix. Any unrecognized request without a <code class="highlighter-rouge">text/html</code> accept header will be redirected to the specified <code class="highlighter-rouge">proxy</code>.</p>
-
-<h2 id="configuring-the-proxy-manually">Configuring the Proxy Manually</h2>
-
-<p>If the proxy option is not flexible enough for you, you can specify an object in the following form (in package.json). You may also specify any configuration value <a href="https://github.com/chimurai/http-proxy-middleware#options">http-proxy-middleware</a> or <a href="https://github.com/nodejitsu/node-http-proxy#options">http-proxy supports</a>.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
-  // ...
-  "proxy": {
-    "/api": {
-      "target": "&lt;url&gt;",
-      "ws": true
-      // ...
-    }
-  }
-  // ...
-}
-</code></pre></div></div>
-
-<p>All requests matching this path will be proxies, no exceptions. This includes requests for <code class="highlighter-rouge">text/html</code>, which the standard proxy option does not <code class="highlighter-rouge">proxy</code>.</p>
-
-<p>If you need to specify multiple proxies, you may do so by specifying additional entries. Matches are regular expressions, so that you can use a regexp to match multiple paths.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
-  // ...
-  "proxy": {
-    // Matches any request starting with /api
-    "/api": {
-      "target": "&lt;url_1&gt;",
-      "ws": true
-      // ...
-    },
-    // Matches any request starting with /foo
-    "/foo": {
-      "target": "&lt;url_2&gt;",
-      "ssl": true,
-      "pathRewrite": {
-        "^/foo": "/foo/beta"
-      }
-      // ...
-    },
-    // Matches /bar/abc.html but not /bar/sub/def.html
-    "/bar/[^/]*[.]html": {
-      "target": "&lt;url_3&gt;",
-      // ...
-    },
-    // Matches /baz/abc.html and /baz/sub/def.html
-    "/baz/.*/.*[.]html": {
-      "target": "&lt;url_4&gt;"
-      // ...
-    }
-  }
-  // ...
-}
-</code></pre></div></div>
-
-<h2 id="configuring-a-websocket-proxy">Configuring a WebSocket Proxy</h2>
-
-<p>When setting up a WebSocket proxy, there are a some extra considerations to be aware of.</p>
-
-<p>If you’re using a WebSocket engine like <a href="https://socket.io">Socket.io</a>, you must have a Socket.io server running that you can use as the proxy target. Socket.io will not work with a standard WebSocket server. Specifically, don’t expect Socket.io to work with <a href="http://websocket.org/echo.html">the websocket.org echo test</a>.</p>
-
-<p>There’s some good documentation available for <a href="https://socket.io/docs/">setting up a Socket.io server</a>.</p>
-
-<p>Standard WebSockets will work with a standard WebSocket server as well as the websocket.org echo test. You can use libraries like <a href="https://github.com/websockets/ws">ws</a> for the server, with <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket">native WebSockets in the browser</a>.</p>
-
-<p>Either way, you can proxy WebSocket requests manually in <code class="highlighter-rouge">package.json</code>:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
-  // ...
-  "proxy": {
-    "/socket": {
-      // Your compatible WebSocket server
-      "target": "ws://&lt;socket_url&gt;",
-      // Tell http-proxy-middleware that this is a WebSocket proxy.
-      // Also allows you to proxy WebSocket requests without an additional HTTP request
-      // https://github.com/chimurai/http-proxy-middleware#external-websocket-upgrade
-      "ws": true
-      // ...
-    }
-  }
-  // ...
-}
-</code></pre></div></div>
 
         
       </section>
@@ -601,12 +498,11 @@ For example, a production setup might look like this after the app is deployed:<
       
   <nav class="pagination">
     
-      <a href="/ajax-and-apis" class="pagination--pager" title="AJAX and APIs
+      <a href="/add-material-ui" class="pagination--pager" title="Adding Material UI
 ">Previous</a>
     
     
-      <a href="/use-https-in-development" class="pagination--pager" title="Using HTTPS in Development
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 

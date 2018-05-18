@@ -103,4 +103,9 @@ var store = [{
         "excerpt":"You don’t have to use Material UI together with React but it is a popular library for integrating Material UI with React apps. If you need it, you can integrate it with Create React App by following these steps: Install Material UI npm: npm install --save @material-ui/coreImport MuiThemeProvider component in...","categories": [],
         "tags": [],
         "url": "/add-material-ui",
+        "teaser":null},{
+        "title": "Generating Dynamic meta Tags on the Server",
+        "excerpt":"Since Create React App doesn’t support server rendering, you might be wondering how to make &lt;meta&gt; tags dynamic and reflect the current URL. To solve this, we recommend to add placeholders into the HTML, like this: &lt;!doctype html&gt;&lt;html lang=\"en\"&gt; &lt;head&gt; &lt;meta property=\"og:title\" content=\"__OG_TITLE__\"&gt; &lt;meta property=\"og:description\" content=\"__OG_DESCRIPTION__\"&gt;Then, on the server, regardless...","categories": [],
+        "tags": [],
+        "url": "/generate-dynamic-meta-tags-on-the-server",
         "teaser":null},]
