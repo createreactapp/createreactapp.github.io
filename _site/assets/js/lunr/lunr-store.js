@@ -98,4 +98,9 @@ var store = [{
         "excerpt":"You may require the dev server to serve pages over HTTPS. One particular case where this could be useful is when using the “proxy” feature to proxy requests to an API server when that API server is itself serving HTTPS. To do this, set the HTTPS environment variable to true,...","categories": [],
         "tags": [],
         "url": "/use-https-in-development",
+        "teaser":null},{
+        "title": "Adding Material UI",
+        "excerpt":"You don’t have to use Material UI together with React but it is a popular library for integrating Material UI with React apps. If you need it, you can integrate it with Create React App by following these steps: Install Material UI npm: npm install --save @material-ui/coreImport MuiThemeProvider component in...","categories": [],
+        "tags": [],
+        "url": "/add-material-ui",
         "teaser":null},]
