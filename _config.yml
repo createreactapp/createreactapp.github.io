@@ -18,7 +18,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 locale                   : "en-US"
 title                    : "Create React App"
 title_separator          : "-"
-name                     : "React"
+name                     : "Create React App"
 description              : "Learn Create React App"
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
@@ -75,7 +75,7 @@ naver_site_verification  :
 
 # Social Sharing
 twitter:
-  username               : BunlongVan
+  username               : 
 facebook:
   username               :
   app_id                 :
@@ -98,10 +98,10 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : 
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an amazing person."
-  location         : "Somewhere"
+  bio              : 
+  location         : 
   email            :
   uri              :
   home             : # null (default), "absolute or relative url to link to author home"
@@ -111,7 +111,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : Bunlong
+  github           : createreactapp
   gitlab           :
   google_plus      :
   keybase          :
