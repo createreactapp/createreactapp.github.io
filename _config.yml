@@ -16,10 +16,10 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Create React App"
+title                    : "Create React App v.1"
 title_separator          : "-"
-name                     : "Create React App"
-description              : "Learn Create React App"
+name                     : "CodeSym"
+description              : "Welcome to Learn Create React App, a comprehensive introduction to create-react-app. - Create React App"
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"

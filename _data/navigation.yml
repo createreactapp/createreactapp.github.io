@@ -1,4 +1,7 @@
 # main links
+main:
+  - title: "[ Learn React ]"
+    url: https://learnreactjs.github.io
 docs:
   - title: Introduction
     children:
