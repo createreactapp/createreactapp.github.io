@@ -1,7 +1,7 @@
 # main links
 main:
   - title: "[ Learn React ]"
-    url: https://learnreactjs.org
+    url: https://www.learnreactjs.org
 docs:
   - title: Introduction
     children:
